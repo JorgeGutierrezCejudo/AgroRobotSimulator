@@ -1,0 +1,10 @@
+file(REMOVE_RECURSE
+  "/home/jorgeurjc/Jorge_ws/devel/lib/patrolling_sim/GoToStartPos"
+  "/home/jorgeurjc/Jorge_ws/devel/lib/patrolling_sim/GoToStartPos.pdb"
+  "CMakeFiles/GoToStartPos.dir/src/GoToStartPos.cpp.o"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/GoToStartPos.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
