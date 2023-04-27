@@ -4,5 +4,9 @@ We present a distributed multi-agent architecture for an autonomous fleet route 
 
 We base our work on this package: [Patrolling_Sim](https://github.com/davidbsp/patrolling_sim.git).
 
+![Captura de pantalla 2023-04-27 a las 11 08 44](https://user-images.githubusercontent.com/129373210/234815737-63503c3c-06b8-40cd-9f8f-6f59396c60a9.png)
+
+
+
 https://user-images.githubusercontent.com/129373210/233597942-00cbb035-db16-4ac0-bc42-95becf73cb92.mov
 
