@@ -1,0 +1,6 @@
+[submodule "Patrolling_Sim"]
+	path = Patrolling_Sim
+	url = https://github.com/davidbsp/patrolling_sim.git
+[submodule "src/Patrolling_Sim"]
+	path = src/Patrolling_Sim
+	url = https://github.com/davidbsp/patrolling_sim.git
