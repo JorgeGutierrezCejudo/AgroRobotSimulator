@@ -1,0 +1,6 @@
+devel_space: /home/jorgeurjc/Jorge_ws/devel
+install: false
+install_space: /home/jorgeurjc/Jorge_ws/install
+profile: default
+source_space: /home/jorgeurjc/Jorge_ws/src
+workspace: /home/jorgeurjc/Jorge_ws

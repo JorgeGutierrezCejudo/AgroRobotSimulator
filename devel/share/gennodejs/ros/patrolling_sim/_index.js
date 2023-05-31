@@ -1,0 +1,1 @@
+/home/jorgeurjc/Jorge_ws/devel/.private/patrolling_sim/share/gennodejs/ros/patrolling_sim/_index.js

@@ -1,0 +1,207 @@
+[35m[1mScanning dependencies of target std_msgs_generate_messages_cpp[0m
+[35m[1mScanning dependencies of target _patrolling_sim_generate_messages_check_deps_GoToStartPosSrv[0m
+[35m[1mScanning dependencies of target SSIPatrolAgent[0m
+[35m[1mScanning dependencies of target std_msgs_generate_messages_lisp[0m
+[35m[1mScanning dependencies of target std_msgs_generate_messages_py[0m
+[35m[1mScanning dependencies of target PatrolAgent[0m
+[35m[1mScanning dependencies of target std_msgs_generate_messages_nodejs[0m
+[35m[1mScanning dependencies of target std_msgs_generate_messages_eus[0m
+[35m[1mScanning dependencies of target idlHistogram[0m
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_eus
+[  2%] [32mBuilding CXX object CMakeFiles/idlHistogram.dir/src/idlHistogram.cpp.o[0m
+[  4%] [32mBuilding CXX object CMakeFiles/SSIPatrolAgent.dir/src/SSIPatrolAgent.cpp.o[0m
+[  6%] [32mBuilding CXX object CMakeFiles/PatrolAgent.dir/src/PatrolAgent.cpp.o[0m
+[  8%] [32mBuilding CXX object CMakeFiles/PatrolAgent.dir/src/getgraph.cpp.o[0m
+[ 11%] [32mBuilding CXX object CMakeFiles/PatrolAgent.dir/src/algorithms.cpp.o[0m
+[ 13%] [32mBuilding CXX object CMakeFiles/PatrolAgent.dir/src/config.cpp.o[0m
+[ 13%] Built target _patrolling_sim_generate_messages_check_deps_GoToStartPosSrv
+[35m[1mScanning dependencies of target patrolling_sim_generate_messages_cpp[0m
+[35m[1mScanning dependencies of target patrolling_sim_generate_messages_lisp[0m
+[35m[1mScanning dependencies of target patrolling_sim_generate_messages_nodejs[0m
+[35m[1mScanning dependencies of target patrolling_sim_generate_messages_py[0m
+[35m[1mScanning dependencies of target patrolling_sim_generate_messages_eus[0m
+[ 15%] [34m[1mGenerating C++ code from patrolling_sim/GoToStartPosSrv.srv[0m
+[ 24%] [34m[1mGenerating Python code from SRV patrolling_sim/GoToStartPosSrv[0m
+[ 24%] [34m[1mGenerating Javascript code from patrolling_sim/GoToStartPosSrv.srv[0m
+[ 24%] [34m[1mGenerating Lisp code from patrolling_sim/GoToStartPosSrv.srv[0m
+[ 24%] [34m[1mGenerating EusLisp code from patrolling_sim/GoToStartPosSrv.srv[0m
+[ 26%] [34m[1mGenerating EusLisp manifest code for patrolling_sim[0m
+[ 26%] Built target patrolling_sim_generate_messages_lisp
+[ 26%] Built target patrolling_sim_generate_messages_nodejs
+[ 26%] Built target patrolling_sim_generate_messages_cpp
+[35m[1mScanning dependencies of target patrolling_sim_gencpp[0m
+[ 26%] Built target patrolling_sim_gencpp
+[35m[1mScanning dependencies of target monitor[0m
+[35m[1mScanning dependencies of target GoToStartPos[0m
+[ 31%] [32mBuilding CXX object CMakeFiles/monitor.dir/src/getgraph.cpp.o[0m
+[ 31%] [32mBuilding CXX object CMakeFiles/monitor.dir/src/monitor.cpp.o[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/GoToStartPos.dir/src/GoToStartPos.cpp.o[0m
+[ 35%] [32m[1mLinking CXX executable /home/jorgeurjc/Jorge_ws/devel/.private/patrolling_sim/lib/patrolling_sim/idlHistogram[0m
+[ 37%] [34m[1mGenerating Python srv __init__.py for patrolling_sim[0m
+[ 37%] Built target idlHistogram
+[ 37%] Built target patrolling_sim_generate_messages_py
+[ 37%] Built target patrolling_sim_generate_messages_eus
+[35m[1mScanning dependencies of target patrolling_sim_generate_messages[0m
+[ 37%] Built target patrolling_sim_generate_messages
+[01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/getgraph.cpp:[m[K In function ‘[01m[Kvoid GetGraphInfo(vertex*, uint, const char*)[m[K’:
+[01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/getgraph.cpp:187:25:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%s[m[K’ expects argument of type ‘[01m[Kchar*[m[K’, but argument 3 has type ‘[01m[Kchar (*)[3][m[K’ [[01;35m[K-Wformat=[m[K]
+  187 |       r=fscanf (file, "[01;35m[K%s[m[K", [32m[K&vertex_web[i].dir[j][m[K);
+      |                        [01;35m[K~^[m[K   [32m[K~~~~~~~~~~~~~~~~~~~~~[m[K
+      |                         [01;35m[K|[m[K   [32m[K|[m[K
+      |                         [01;35m[K|[m[K   [32m[Kchar (*)[3][m[K
+      |                         [01;35m[Kchar*[m[K
+[01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/getgraph.cpp:[m[K In function ‘[01m[Kvoid GetGraph1Info(vertex*, charge*, uint, const char*, uint)[m[K’:
+[01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/getgraph.cpp:260:25:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%s[m[K’ expects argument of type ‘[01m[Kchar*[m[K’, but argument 3 has type ‘[01m[Kchar (*)[3][m[K’ [[01;35m[K-Wformat=[m[K]
+  260 |       r=fscanf (file, "[01;35m[K%s[m[K", [32m[K&vertex_web[i].dir[j][m[K);
+      |                        [01;35m[K~^[m[K   [32m[K~~~~~~~~~~~~~~~~~~~~~[m[K
+      |                         [01;35m[K|[m[K   [32m[K|[m[K
+      |                         [01;35m[K|[m[K   [32m[Kchar (*)[3][m[K
+      |                         [01;35m[Kchar*[m[K
+[01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/getgraph.cpp:[m[K In function ‘[01m[Kvoid GetGraph2Info(vertex*, uint, const char*, uint)[m[K’:
+[01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/getgraph.cpp:318:35:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%s[m[K’ expects argument of type ‘[01m[Kchar*[m[K’, but argument 3 has type ‘[01m[Kchar (*)[3][m[K’ [[01;35m[K-Wformat=[m[K]
+  318 |                 r=fscanf (file, "[01;35m[K%s[m[K", [32m[K&vertex_web[0].dir[0][m[K);
+      |                                  [01;35m[K~^[m[K   [32m[K~~~~~~~~~~~~~~~~~~~~~[m[K
+      |                                   [01;35m[K|[m[K   [32m[K|[m[K
+      |                                   [01;35m[K|[m[K   [32m[Kchar (*)[3][m[K
+      |                                   [01;35m[Kchar*[m[K
+[01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/getgraph.cpp:351:25:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%s[m[K’ expects argument of type ‘[01m[Kchar*[m[K’, but argument 3 has type ‘[01m[Kchar (*)[3][m[K’ [[01;35m[K-Wformat=[m[K]
+  351 |       r=fscanf (file, "[01;35m[K%s[m[K", [32m[K&vertex_web[i].dir[j][m[K);
+      |                        [01;35m[K~^[m[K   [32m[K~~~~~~~~~~~~~~~~~~~~~[m[K
+      |                         [01;35m[K|[m[K   [32m[K|[m[K
+      |                         [01;35m[K|[m[K   [32m[Kchar (*)[3][m[K
+      |                         [01;35m[Kchar*[m[K
+[01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/getgraph.cpp:[m[K In function ‘[01m[Kvoid GetGraphInfo(vertex*, uint, const char*)[m[K’:
+[01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/getgraph.cpp:187:25:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%s[m[K’ expects argument of type ‘[01m[Kchar*[m[K’, but argument 3 has type ‘[01m[Kchar (*)[3][m[K’ [[01;35m[K-Wformat=[m[K]
+  187 |       r=fscanf (file, "[01;35m[K%s[m[K", [32m[K&vertex_web[i].dir[j][m[K);
+      |                        [01;35m[K~^[m[K   [32m[K~~~~~~~~~~~~~~~~~~~~~[m[K
+      |                         [01;35m[K|[m[K   [32m[K|[m[K
+      |                         [01;35m[K|[m[K   [32m[Kchar (*)[3][m[K
+      |                         [01;35m[Kchar*[m[K
+[01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/getgraph.cpp:[m[K In function ‘[01m[Kvoid GetGraph1Info(vertex*, charge*, uint, const char*, uint)[m[K’:
+[01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/getgraph.cpp:260:25:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%s[m[K’ expects argument of type ‘[01m[Kchar*[m[K’, but argument 3 has type ‘[01m[Kchar (*)[3][m[K’ [[01;35m[K-Wformat=[m[K]
+  260 |       r=fscanf (file, "[01;35m[K%s[m[K", [32m[K&vertex_web[i].dir[j][m[K);
+      |                        [01;35m[K~^[m[K   [32m[K~~~~~~~~~~~~~~~~~~~~~[m[K
+      |                         [01;35m[K|[m[K   [32m[K|[m[K
+      |                         [01;35m[K|[m[K   [32m[Kchar (*)[3][m[K
+      |                         [01;35m[Kchar*[m[K
+[01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/getgraph.cpp:[m[K In function ‘[01m[Kvoid GetGraph2Info(vertex*, uint, const char*, uint)[m[K’:
+[01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/getgraph.cpp:318:35:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%s[m[K’ expects argument of type ‘[01m[Kchar*[m[K’, but argument 3 has type ‘[01m[Kchar (*)[3][m[K’ [[01;35m[K-Wformat=[m[K]
+  318 |                 r=fscanf (file, "[01;35m[K%s[m[K", [32m[K&vertex_web[0].dir[0][m[K);
+      |                                  [01;35m[K~^[m[K   [32m[K~~~~~~~~~~~~~~~~~~~~~[m[K
+      |                                   [01;35m[K|[m[K   [32m[K|[m[K
+      |                                   [01;35m[K|[m[K   [32m[Kchar (*)[3][m[K
+      |                                   [01;35m[Kchar*[m[K
+[01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/getgraph.cpp:351:25:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%s[m[K’ expects argument of type ‘[01m[Kchar*[m[K’, but argument 3 has type ‘[01m[Kchar (*)[3][m[K’ [[01;35m[K-Wformat=[m[K]
+  351 |       r=fscanf (file, "[01;35m[K%s[m[K", [32m[K&vertex_web[i].dir[j][m[K);
+      |                        [01;35m[K~^[m[K   [32m[K~~~~~~~~~~~~~~~~~~~~~[m[K
+      |                         [01;35m[K|[m[K   [32m[K|[m[K
+      |                         [01;35m[K|[m[K   [32m[Kchar (*)[3][m[K
+      |                         [01;35m[Kchar*[m[K
+[01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/SSIPatrolAgent.cpp:[m[K In member function ‘[01m[Kvirtual int SSIPatrolAgent::compute_next_vertex()[m[K’:
+[01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/SSIPatrolAgent.cpp:450:1:[m[K [01;35m[Kwarning: [m[Kno return statement in function returning non-void [[01;35m[K-Wreturn-type[m[K]
+  450 | [01;35m[K}[m[K
+      | [01;35m[K^[m[K
+[ 40%] [32m[1mLinking CXX shared library /home/jorgeurjc/Jorge_ws/devel/.private/patrolling_sim/lib/libSSIPatrolAgent.so[0m
+[ 40%] Built target SSIPatrolAgent
+[ 42%] [32m[1mLinking CXX executable /home/jorgeurjc/Jorge_ws/devel/.private/patrolling_sim/lib/patrolling_sim/monitor[0m
+[ 42%] Built target monitor
+[ 44%] [32m[1mLinking CXX executable /home/jorgeurjc/Jorge_ws/devel/.private/patrolling_sim/lib/patrolling_sim/GoToStartPos[0m
+[ 44%] Built target GoToStartPos
+[ 46%] [32m[1mLinking CXX shared library /home/jorgeurjc/Jorge_ws/devel/.private/patrolling_sim/lib/libPatrolAgent.so[0m
+[ 46%] Built target PatrolAgent
+[35m[1mScanning dependencies of target CBLS[0m
+[35m[1mScanning dependencies of target Random[0m
+[35m[1mScanning dependencies of target DTAGreedy[0m
+[35m[1mScanning dependencies of target SEBS[0m
+[35m[1mScanning dependencies of target MSP[0m
+[35m[1mScanning dependencies of target DTASSI[0m
+[35m[1mScanning dependencies of target DTASSIPart[0m
+[35m[1mScanning dependencies of target Cyclic[0m
+[35m[1mScanning dependencies of target Conscientious_Reactive[0m
+[35m[1mScanning dependencies of target Conscientious_Cognitive[0m
+[35m[1mScanning dependencies of target GBS[0m
+[35m[1mScanning dependencies of target Heuristic_Conscientious_Reactive[0m
+[ 51%] [32mBuilding CXX object CMakeFiles/DTASSI.dir/src/DTASSI_Agent.cpp.o[0m
+[ 51%] [32mBuilding CXX object CMakeFiles/MSP.dir/src/MSP_Agent.cpp.o[0m
+[ 57%] [32mBuilding CXX object CMakeFiles/CBLS.dir/src/CBLS_Agent.cpp.o[0m
+[ 57%] [32mBuilding CXX object CMakeFiles/Random.dir/src/Random_Agent.cpp.o[0m
+[ 57%] [32mBuilding CXX object CMakeFiles/DTAGreedy.dir/src/DTAGreedy_Agent.cpp.o[0m
+[ 60%] [32mBuilding CXX object CMakeFiles/DTASSIPart.dir/src/DTASSIPart_Agent.cpp.o[0m
+[ 62%] [32mBuilding CXX object CMakeFiles/SEBS.dir/src/SEBS_Agent.cpp.o[0m
+[ 64%] [32mBuilding CXX object CMakeFiles/Cyclic.dir/src/Cyclic_Agent.cpp.o[0m
+[ 66%] [32mBuilding CXX object CMakeFiles/Conscientious_Cognitive.dir/src/Conscientious_Cognitive_Agent.cpp.o[0m
+[ 68%] [32mBuilding CXX object CMakeFiles/Conscientious_Reactive.dir/src/Conscientious_Reactive_Agent.cpp.o[0m
+[ 71%] [32mBuilding CXX object CMakeFiles/Heuristic_Conscientious_Reactive.dir/src/Heuristic_Conscientious_Reactive_Agent.cpp.o[0m
+[ 73%] [32mBuilding CXX object CMakeFiles/GBS.dir/src/GBS_Agent.cpp.o[0m
+[ 75%] [32m[1mLinking CXX executable /home/jorgeurjc/Jorge_ws/devel/.private/patrolling_sim/lib/patrolling_sim/Conscientious_Cognitive[0m
+[ 77%] [32m[1mLinking CXX executable /home/jorgeurjc/Jorge_ws/devel/.private/patrolling_sim/lib/patrolling_sim/Random[0m
+[ 80%] [32m[1mLinking CXX executable /home/jorgeurjc/Jorge_ws/devel/.private/patrolling_sim/lib/patrolling_sim/Conscientious_Reactive[0m
+[ 82%] [32m[1mLinking CXX executable /home/jorgeurjc/Jorge_ws/devel/.private/patrolling_sim/lib/patrolling_sim/CBLS[0m
+[ 82%] Built target Conscientious_Cognitive
+[ 82%] Built target Conscientious_Reactive
+[ 82%] Built target Random
+[ 82%] Built target CBLS
+[ 84%] [32m[1mLinking CXX executable /home/jorgeurjc/Jorge_ws/devel/.private/patrolling_sim/lib/patrolling_sim/Cyclic[0m
+[ 86%] [32m[1mLinking CXX executable /home/jorgeurjc/Jorge_ws/devel/.private/patrolling_sim/lib/patrolling_sim/DTASSI[0m
+[ 86%] Built target Cyclic
+[ 86%] Built target DTASSI
+In file included from [01m[K/opt/ros/noetic/include/ros/ros.h:40[m[K,
+                 from [01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/GBS_Agent.cpp:39[m[K:
+[01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/GBS_Agent.cpp:[m[K In member function ‘[01m[Kvirtual void GBS_Agent::init(int, char**)[m[K’:
+[01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/GBS_Agent.cpp:79:12:[m[K [01;35m[Kwarning: [m[Kconversion lacks type at end of format [[01;35m[K-Wformat=[m[K]
+   79 |   ROS_INFO([01;35m[K"Numbero of robot %D"[m[K,NUMBER_OF_ROBOTS);
+      |            [01;35m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/ros/console.h:351:165:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION_WITH_FILTER[m[K’
+  351 |     ::ros::console::print(filter, __rosconsole_define_location__loc.logger_, __rosconsole_define_location__loc.level_, __FILE__, __LINE__, __ROSCONSOLE_FUNCTION__, [01;36m[K__VA_ARGS__[m[K)
+      |                                                                                                                                                                     [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/ros/console.h:390:7:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION[m[K’
+  390 |       [01;36m[KROSCONSOLE_PRINT_AT_LOCATION[m[K(__VA_ARGS__); \
+      |       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/ros/console.h:575:35:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG_COND[m[K’
+  575 | #define ROS_LOG(level, name, ...) [01;36m[KROS_LOG_COND[m[K(true, level, name, __VA_ARGS__)
+      |                                   [01;36m[K^~~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/rosconsole/macros_generated.h:110:23:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG[m[K’
+  110 | #define ROS_INFO(...) [01;36m[KROS_LOG[m[K(::ros::console::levels::Info, ROSCONSOLE_DEFAULT_NAME, __VA_ARGS__)
+      |                       [01;36m[K^~~~~~~[m[K
+[01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/GBS_Agent.cpp:79:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_INFO[m[K’
+   79 |   [01;36m[KROS_INFO[m[K("Numbero of robot %D",NUMBER_OF_ROBOTS);
+      |   [01;36m[K^~~~~~~~[m[K
+[01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/GBS_Agent.cpp:79:31:[m[K [01;36m[Knote: [m[Kformat string is defined here
+   79 |   ROS_INFO("Numbero of robot %[01;36m[KD[m[K",NUMBER_OF_ROBOTS);
+      |                               [01;36m[K^[m[K
+In file included from [01m[K/opt/ros/noetic/include/ros/ros.h:40[m[K,
+                 from [01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/GBS_Agent.cpp:39[m[K:
+[01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/GBS_Agent.cpp:79:12:[m[K [01;35m[Kwarning: [m[Ktoo many arguments for format [[01;35m[K-Wformat-extra-args[m[K]
+   79 |   ROS_INFO([01;35m[K"Numbero of robot %D"[m[K,NUMBER_OF_ROBOTS);
+      |            [01;35m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/ros/console.h:351:165:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION_WITH_FILTER[m[K’
+  351 |     ::ros::console::print(filter, __rosconsole_define_location__loc.logger_, __rosconsole_define_location__loc.level_, __FILE__, __LINE__, __ROSCONSOLE_FUNCTION__, [01;36m[K__VA_ARGS__[m[K)
+      |                                                                                                                                                                     [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/ros/console.h:390:7:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION[m[K’
+  390 |       [01;36m[KROSCONSOLE_PRINT_AT_LOCATION[m[K(__VA_ARGS__); \
+      |       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/ros/console.h:575:35:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG_COND[m[K’
+  575 | #define ROS_LOG(level, name, ...) [01;36m[KROS_LOG_COND[m[K(true, level, name, __VA_ARGS__)
+      |                                   [01;36m[K^~~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/rosconsole/macros_generated.h:110:23:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG[m[K’
+  110 | #define ROS_INFO(...) [01;36m[KROS_LOG[m[K(::ros::console::levels::Info, ROSCONSOLE_DEFAULT_NAME, __VA_ARGS__)
+      |                       [01;36m[K^~~~~~~[m[K
+[01m[K/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src/GBS_Agent.cpp:79:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_INFO[m[K’
+   79 |   [01;36m[KROS_INFO[m[K("Numbero of robot %D",NUMBER_OF_ROBOTS);
+      |   [01;36m[K^~~~~~~~[m[K
+[ 88%] [32m[1mLinking CXX executable /home/jorgeurjc/Jorge_ws/devel/.private/patrolling_sim/lib/patrolling_sim/DTAGreedy[0m
+[ 91%] [32m[1mLinking CXX executable /home/jorgeurjc/Jorge_ws/devel/.private/patrolling_sim/lib/patrolling_sim/Heuristic_Conscientious_Reactive[0m
+[ 91%] Built target DTAGreedy
+[ 91%] Built target Heuristic_Conscientious_Reactive
+[ 93%] [32m[1mLinking CXX executable /home/jorgeurjc/Jorge_ws/devel/.private/patrolling_sim/lib/patrolling_sim/SEBS[0m
+[ 95%] [32m[1mLinking CXX executable /home/jorgeurjc/Jorge_ws/devel/.private/patrolling_sim/lib/patrolling_sim/MSP[0m
+[ 97%] [32m[1mLinking CXX executable /home/jorgeurjc/Jorge_ws/devel/.private/patrolling_sim/lib/patrolling_sim/DTASSIPart[0m
+[ 97%] Built target SEBS
+[ 97%] Built target MSP
+[ 97%] Built target DTASSIPart
+[100%] [32m[1mLinking CXX executable /home/jorgeurjc/Jorge_ws/devel/.private/patrolling_sim/lib/patrolling_sim/GBS[0m
+[100%] Built target GBS

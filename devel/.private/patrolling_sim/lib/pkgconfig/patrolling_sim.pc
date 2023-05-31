@@ -1,0 +1,8 @@
+prefix=/home/jorgeurjc/Jorge_ws/devel/.private/patrolling_sim
+
+Name: patrolling_sim
+Description: Description of patrolling_sim
+Version: 2.2.4
+Cflags: -I/home/jorgeurjc/Jorge_ws/devel/.private/patrolling_sim/include -I/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src
+Libs: -L${prefix}/lib -lPatrolAgent -lSSIPatrolAgent
+Requires: 
