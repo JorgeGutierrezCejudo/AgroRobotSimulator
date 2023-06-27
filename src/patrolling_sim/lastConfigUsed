@@ -1,0 +1,9 @@
+[Config]
+map: grid
+nrobots: 4
+algorithm: SEBS
+locmode: AMCL
+navmode: ros
+gwait: 0
+term: gnome-terminal
+grafo: PY_VAR12

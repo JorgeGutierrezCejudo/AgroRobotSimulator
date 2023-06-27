@@ -1,0 +1,114 @@
+
+Complete Patrol Cycles:	1
+
+Vertex	Avg Idl	StdDev Idl	#Visits
+0	145.0	93.7	2
+1	58.6	49.8	5
+2	20.5	19.0	4
+3	50.4	40.0	6
+4	79.3	47.4	3
+5	77.9	77.3	4
+6	82.9	44.5	4
+7	263.4	0.0	1
+8	57.3	58.4	3
+9	25.2	3.6	3
+10	26.2	14.2	3
+
+Node idleness
+   worst_avg_idleness (graph) = 263.4
+   avg_idleness (graph) = 80.6
+   median_idleness (graph) = 58.6
+   stddev_idleness (graph) = 66.8
+
+Global idleness
+   min = 6.4
+   avg = 67.0
+   stddev = 67.1
+   max = 263.4
+
+Interferences	18
+Interference rate	3.07
+Visits	38
+Avg visits per node	3.5
+Time Elapsed	351.4
+Real Time Elapsed	381.0
+Comm delay: 0.00
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Complete Patrol Cycles:	2
+
+Vertex	Avg Idl	StdDev Idl	#Visits
+0	119.8	84.3	3
+1	59.0	45.5	6
+2	52.9	73.3	6
+3	52.7	37.4	7
+4	79.3	47.4	3
+5	79.7	69.2	5
+6	82.9	44.5	4
+7	158.8	104.7	2
+8	57.3	58.4	3
+9	73.8	100.0	5
+10	78.8	108.1	5
+
+Node idleness
+   worst_avg_idleness (graph) = 158.8
+   avg_idleness (graph) = 81.4
+   median_idleness (graph) = 78.8
+   stddev_idleness (graph) = 30.5
+
+Global idleness
+   min = 6.4
+   avg = 75.9
+   stddev = 76.7
+   max = 293.9
+
+Interferences	18
+Interference rate	2.66
+Visits	49
+Avg visits per node	4.5
+Time Elapsed	405.5
+Real Time Elapsed	439.0
+Comm delay: 0.00
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Complete Patrol Cycles:	3
+
+Vertex	Avg Idl	StdDev Idl	#Visits
+0	119.8	84.3	3
+1	59.0	45.5	6
+2	52.9	73.3	6
+3	52.7	37.4	7
+4	79.3	47.4	3
+5	73.9	64.5	6
+6	90.5	42.6	5
+7	142.5	88.5	3
+8	57.3	58.4	3
+9	68.2	86.6	7
+10	73.3	99.5	6
+
+Node idleness
+   worst_avg_idleness (graph) = 142.5
+   avg_idleness (graph) = 79.0
+   median_idleness (graph) = 73.3
+   stddev_idleness (graph) = 27.4
+
+Global idleness
+   min = 6.4
+   avg = 79.1
+   stddev = 77.8
+   max = 293.9
+
+Interferences	23
+Interference rate	2.68
+Visits	55
+Avg visits per node	5.0
+Time Elapsed	515.4
+Real Time Elapsed	558.0
+Comm delay: 0.00
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+

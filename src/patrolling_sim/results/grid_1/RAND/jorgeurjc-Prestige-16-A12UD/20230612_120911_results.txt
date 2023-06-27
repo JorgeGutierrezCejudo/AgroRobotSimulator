@@ -1,0 +1,35 @@
+
+Complete Patrol Cycles:	1
+
+Vertex	Avg Idl	StdDev Idl	#Visits
+0	6.0	0.0	1
+1	58.9	0.0	1
+
+Node idleness
+   worst_avg_idleness (graph) = 58.9
+   avg_idleness (graph) = 32.4
+   median_idleness (graph) = 0.0
+   stddev_idleness (graph) = 26.5
+
+Global idleness
+   min = 6.0
+   avg = 32.4
+   stddev = 26.5
+   max = 58.9
+
+Cost info
+   Robot 0 travel the most:32.318600
+   Robot 0 travel the lest:32.318600
+   Total distance travel of all robots: 32.318600
+   Median: 32.318600
+
+Interferences	0
+Interference rate	0.00
+Visits	2
+Avg visits per node	1.0
+Time Elapsed	58.9
+Real Time Elapsed	59.0
+Comm delay: 0.00
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+

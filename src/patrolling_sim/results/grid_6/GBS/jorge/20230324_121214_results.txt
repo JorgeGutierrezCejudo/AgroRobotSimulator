@@ -1,0 +1,38 @@
+
+Complete Patrol Cycles:	1
+
+Vertex	Avg Idl	StdDev Idl	#Visits
+0	146.2	124.8	2
+1	95.8	99.3	4
+2	140.5	67.6	2
+3	55.7	58.1	6
+4	163.8	99.5	2
+5	63.1	57.7	5
+6	93.9	120.9	4
+7	350.4	0.0	1
+8	55.5	57.0	6
+9	114.3	0.0	1
+10	68.1	71.5	5
+
+Node idleness
+   worst_avg_idleness (graph) = 350.4
+   avg_idleness (graph) = 122.5
+   median_idleness (graph) = 95.8
+   stddev_idleness (graph) = 80.7
+
+Global idleness
+   min = 2.5
+   avg = 90.7
+   stddev = 96.1
+   max = 350.4
+
+Interferences	107
+Interference rate	15.79
+Visits	38
+Avg visits per node	3.5
+Time Elapsed	406.7
+Real Time Elapsed	590.0
+Comm delay: 0.00
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+

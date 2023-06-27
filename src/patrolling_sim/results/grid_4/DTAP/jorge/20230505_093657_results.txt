@@ -1,0 +1,132 @@
+
+Complete Patrol Cycles:	1
+
+Vertex	Avg Idl	StdDev Idl	#Visits
+0	13.5	12.1	5
+1	16.1	11.3	5
+2	15.7	12.2	2
+3	24.1	8.1	2
+4	25.4	0.0	1
+5	15.2	10.1	2
+6	6.1	0.0	1
+7	86.5	0.0	1
+8	15.9	0.0	1
+9	74.9	0.0	1
+10	5.1	0.0	1
+
+Node idleness
+   worst_avg_idleness (graph) = 86.5
+   avg_idleness (graph) = 27.1
+   median_idleness (graph) = 0.0
+   stddev_idleness (graph) = 26.0
+
+Global idleness
+   min = 2.4
+   avg = 21.4
+   stddev = 21.6
+   max = 86.5
+
+Cost info
+   Robot 3 travel the most:51.501923
+   Robot 1 travel the lest:25.159918
+   Total distance travel of all robots: 144.357086
+   Median: 36.089272
+
+Interferences	0
+Interference rate	0.00
+Visits	22
+Avg visits per node	2.0
+Time Elapsed	86.5
+Real Time Elapsed	87.0
+Comm delay: 0.00
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Complete Patrol Cycles:	2
+
+Vertex	Avg Idl	StdDev Idl	#Visits
+0	24.1	21.9	8
+1	22.1	22.3	8
+2	15.7	12.2	2
+3	24.1	8.1	2
+4	85.9	60.5	2
+5	51.8	52.4	3
+6	80.8	74.7	2
+7	95.2	8.7	2
+8	72.2	56.3	2
+9	101.8	26.9	2
+10	59.4	54.3	2
+
+Node idleness
+   worst_avg_idleness (graph) = 101.8
+   avg_idleness (graph) = 57.5
+   median_idleness (graph) = 0.0
+   stddev_idleness (graph) = 30.5
+
+Global idleness
+   min = 2.4
+   avg = 45.6
+   stddev = 47.4
+   max = 155.4
+
+Cost info
+   Robot 3 travel the most:119.498909
+   Robot 1 travel the lest:25.159918
+   Total distance travel of all robots: 468.890289
+   Median: 117.222572
+
+Interferences	5
+Interference rate	1.47
+Visits	35
+Avg visits per node	3.2
+Time Elapsed	203.5
+Real Time Elapsed	204.0
+Comm delay: 0.00
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Complete Patrol Cycles:	3
+
+Vertex	Avg Idl	StdDev Idl	#Visits
+0	24.5	23.0	11
+1	23.9	23.9	12
+2	66.5	94.8	4
+3	95.9	101.8	3
+4	88.0	49.5	3
+5	51.8	52.4	3
+6	71.2	62.4	3
+7	97.0	7.5	3
+8	74.7	46.1	3
+9	90.9	26.8	3
+10	82.9	55.4	3
+
+Node idleness
+   worst_avg_idleness (graph) = 97.0
+   avg_idleness (graph) = 69.7
+   median_idleness (graph) = 0.0
+   stddev_idleness (graph) = 25.0
+
+Global idleness
+   min = 2.4
+   avg = 54.5
+   stddev = 57.6
+   max = 239.5
+
+Cost info
+   Robot 3 travel the most:175.022507
+   Robot 1 travel the lest:84.959358
+   Total distance travel of all robots: 1035.621948
+   Median: 258.905487
+
+Interferences	5
+Interference rate	1.03
+Visits	51
+Avg visits per node	4.6
+Time Elapsed	291.0
+Real Time Elapsed	291.0
+Comm delay: 0.00
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
