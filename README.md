@@ -11,3 +11,6 @@ We base our work on this package: [Patrolling_Sim](https://github.com/davidbsp/p
 
 https://user-images.githubusercontent.com/129373210/233597942-00cbb035-db16-4ac0-bc42-95becf73cb92.mov
 
+
+To use this repository you should note that you need to install Gurobi Optimizer.
+If you already have Guroby installed and licensed, you must clone the repository and compolite whit catkin_make
