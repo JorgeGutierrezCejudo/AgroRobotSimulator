@@ -14,3 +14,16 @@ https://user-images.githubusercontent.com/129373210/233597942-00cbb035-db16-4ac0
 
 To use this repository you should note that you need to install Gurobi Optimizer.
 If you already have Guroby installed and licensed, you must clone the repository and compolite with catkin_make
+
+The simulations have been performed with the following software features:
+-	Ubuntu 20.04
+-	ROS Noetic
+-	Python 3.7
+-	C++ 17
+-	Gurobi 9.3
+
+To start a simulation:
+
+```ruby
+   roscd patrolling_sim;python3 StartExperiment.py
+```
