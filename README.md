@@ -25,5 +25,5 @@ The simulations have been performed with the following software features:
 To start a simulation:
 
 ```
-   roscd patrolling_sim;python3 StartExperiment.py
+   roscd patrolling_sim;python3 start_experiment.py
 ```
