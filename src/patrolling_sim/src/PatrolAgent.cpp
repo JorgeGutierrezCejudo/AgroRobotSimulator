@@ -52,19 +52,22 @@
 #include <math.h>
 #include "PatrolAgent.h"
 #include <visualization_msgs/Marker.h> 
-
 #include <cmath>
+#include <unity_robotics_demo_msgs/XCordenate.h>
+
 
 
 using namespace std;
 bool change ;
-int numerot = 2;
+int numerot = 0;
 bool ida=true;
 int zanjas=20;
 int terreno=1;
 uint chargePoints;
 int GrafoNumber;
 int Numero=2;
+int extraalg;
+bool goalreached=false;
 
 
 #define DELTA_TIME_SEQUENTIAL_START 15
@@ -104,6 +107,8 @@ void PatrolAgent::init(int argc, char** argv) {
     GrafoNumber=atoi(argv[4]);
 
     NumberRobots=atoi(argv[5]);
+
+    extraalg=0;
 
     ///     Aqui pondriamos las distintas funciones en funcion de el grafo
     
@@ -277,6 +282,9 @@ void PatrolAgent::init(int argc, char** argv) {
         
     //Subscrever posições de outros robots
     positions_sub = nh.subscribe<nav_msgs::Odometry>("positions", 10, boost::bind(&PatrolAgent::positionsCB, this, _1));  
+
+    positions_unity_pub = nh.advertise<unity_robotics_demo_msgs::XCordenate>("posicion", 1);
+
     
     char string1[40];
     char string2[40];
@@ -415,16 +423,16 @@ void PatrolAgent::run() {
     ros::Subscriber CompletePatrol_sub = nh.subscribe("completePatrol",1000,ChangeGraph);
 
     ros::Rate loop_rate(30); //0.033 seconds or 30Hz
+/**************************************************************************************************************************************/   
+//IF YOU CHOOSE ALGORITH BASE IN PYTHON SCRIPT
+    if (extraalg==1){
 
-            char path[]="solver_vrp.py";
-        char file[]=" GrafoInfo.txt";
-		FILE* fp ;
-        Py_Initialize();
-        fp=_Py_fopen(path,"r");
-		PyRun_SimpleFile( fp,path);
-		Py_Finalize();
-
-
+    char path[]="solver_vrp.py";
+	FILE* fp ;
+    Py_Initialize();
+    fp=_Py_fopen(path,"r");
+	PyRun_SimpleFile( fp,path);
+	Py_Finalize();
     string solucion="solucion.txt";
     ifstream archivo(solucion.c_str());
     std::string linea;
@@ -442,96 +450,20 @@ void PatrolAgent::run() {
     }
         i=1;
         j++;
-    }
-
-
-     //Aqui no necesita extension
-        // const std::string& path="prueba.py";
-		// FILE* fp = fopen( path.c_str(), "r" );
-
-		// if ( fp == NULL )
-		// {
-		// 	ROS_INFO("Error");
-		// }
-        // else {
-        //     ROS_INFO("Dentro");
-		// int re = PyRun_SimpleFile( fp,path.c_str() );
-        // }
-		// fclose( fp );
-
-
+    }}
+/*******************************************************************************************************************++*/
+   
     bool first=true;
-    
+   
+//MAIN PROCESS///
+
     while(ros::ok()){
 
-                       
-          // if (change==true && j==1) {
 
-          //       graph_file = "maps/grid/grid1.graph";
-                
-          //       //Check Graph Dimension:
-          //       dimension = GetGraphDimension (graph_file.c_str()); ;
+// Initial marker for RVIZ
 
-
-          //       //Check Charge Points
-          //       chargePoints= GetGraphChargePoints (graph_file.c_str());;
-
-                
-          //       //Create Structure to save the Graph Info;
-          //       vertex_web = new vertex[dimension];
-
-          //       //Create Stucture of charge points
-          //       charge_web = new charge[chargePoints];
-          //       //Get the Graph info from the Graph File
-          //       GetGraphInfo(vertex_web,charge_web,dimension, graph_file.c_str(),chargePoints);
-                
-                
-          //       uint nedges = GetNumberEdges(vertex_web,dimension);
-
-                
-
-          //       printf("Loaded graph %s with %d nodes and %d edges, with %d charge points\n",mapname.c_str(),dimension,nedges,chargePoints);
-
-          //       change=false;
-          //       j=2;// Estado 2
-                
-          //        }
-
-          //   else if (change==true && j==2) {
-
-          //       graph_file = "maps/grid/grid.graph";
-                
-          //       //Check Graph Dimension:
-          //       dimension = GetGraphDimension (graph_file.c_str()); ;
-
-
-          //       //Check Charge Points
-          //       chargePoints= GetGraphChargePoints (graph_file.c_str());;
-
-                
-          //       //Create Structure to save the Graph Info;
-          //       vertex_web = new vertex[dimension];
-
-          //       //Create Stucture of charge points
-          //       charge_web = new charge[chargePoints];
-          //       //Get the Graph info from the Graph File
-          //       GetGraphInfo(vertex_web,charge_web,dimension, graph_file.c_str(),chargePoints);
-                
-                
-          //       uint nedges = GetNumberEdges(vertex_web,dimension);
-
-                
-
-          //       printf("Loaded graph %s with %d nodes and %d edges, with %d charge points\n",mapname.c_str(),dimension,nedges,chargePoints);
-
-          //       change=false;
-          //       j=1;
-                
-          //        }
-
-
-// TODOS LOS MARKER INICIALES
     InitialDisplay();
+
         if (goal_complete) {
             onGoalComplete();  // can be redefined
             resend_goal_count=0;
@@ -560,9 +492,13 @@ void PatrolAgent::run() {
             
             if (end_simulation) {
                 return;
-            }   
-        
-        } // if (goal_complete)
+            }
+        } 
+
+        if (goalreached){
+        DisplayWorking();
+        }
+
         
 		loop_rate.sleep(); 
 
@@ -572,199 +508,22 @@ void PatrolAgent::run() {
 
 void PatrolAgent::onGoalComplete(){   
 
-
-//CAMBIO DE MENSAJE A REALIZANDO UNA TAREA
-    visualization_msgs::Marker marker;
-    std::string test="Tractor "+std::to_string(ID_ROBOT)+" is working";
-    marker.header.frame_id = "map";
-    marker.header.stamp = ros::Time();
-    marker.ns = "my_namespace";
-    marker.id = (ID_ROBOT)+2;
-    marker.type = visualization_msgs::Marker::TEXT_VIEW_FACING;
-    marker.action = visualization_msgs::Marker::ADD;
-    marker.pose.position.x = 0;
-    marker.pose.position.y = -(ID_ROBOT*5+5);
-    marker.pose.orientation.w = 1.0;
-    marker.scale.z = 3;
-    marker.color.a = 1; 
-    marker.color.r = 1;
-    marker.color.g = 1;
-    marker.color.b = 1;
-    marker.text = test;
-    vis_pub.publish( marker );
-    
-
-
-
-
     if(next_vertex>-1) {
         //Update Idleness Table:
         update_idleness();
         current_vertex = next_vertex;       
     }
-    
-    bool derecha=true;
-
-    if (numerot >= 1) {
-    double target_x = vertex_web[next_vertex].x,
-           target_y = vertex_web[next_vertex].y;
-    double desplazamientoy,desplazamientox;
-    double posicionx;
-    double posiciony;
-
-    posicionx=target_x;
-    posiciony=target_y;
-
-//DIBUJO RECTANGULO DE TRABAJO
-    // visualization_msgs::Marker marker;
-    // marker.header.frame_id = "map";
-    // marker.header.stamp = ros::Time();
-    // marker.ns = "my_namespace";
-    // marker.id = terreno;
-    // marker.type = visualization_msgs::Marker::CUBE;
-    // marker.action = visualization_msgs::Marker::ADD;
-    // marker.pose.position.x = posicionx+3.75;
-    // marker.pose.position.y = posiciony+4.25;
-    // marker.pose.position.z = 0;
-    // marker.pose.orientation.x = 0.0;
-    // marker.pose.orientation.y = 0.0;
-    // marker.pose.orientation.z = 0.0;
-    // marker.pose.orientation.w = 1.0;
-    // marker.scale.x = 8;
-    // marker.scale.y = 9;
-    // marker.scale.z = 1;
-    // marker.color.a = 0.5; // Don't forget to set the alpha!
-    // marker.color.r = 0.75;
-    // marker.color.g = 0.6;
-    // marker.color.b = 0.41;
-    // //only if using a MESH_RESOURCE marker type:
-    // vis_pub.publish( marker );
-
-
-
-//COMIENZO DE TAREA
-    for(int i=0;i<24;i++){   
-//PRIMERA DERECHA
-    if (derecha==true){
-
-//CALCULO DE POSICIÓN A MOVER
-    posicionx=posicionx+0.5;
-    posiciony=posiciony;
-//DIBUJO LINEA DE DERECHA
-
-    visualization_msgs::Marker marker;
-    marker.header.frame_id = "map";
-    marker.header.stamp = ros::Time();
-    marker.ns = "my_namespace";
-    marker.id = zanjas+((ID_ROBOT+1)*100);
-    marker.type = visualization_msgs::Marker::LINE_STRIP;
-    marker.action = visualization_msgs::Marker::MODIFY;
-    marker.pose.orientation.w = 1.0;
-    for (uint32_t i = 0; i < 2; i++){
-        geometry_msgs::Point p;
-        p.x=posicionx-(i*0.5);
-        p.y=posiciony;
-        marker.points.push_back(p);}
-    marker.scale.x = 0.2;
-    marker.scale.y = 1;
-    marker.scale.z = 1;
-    marker.color.a = 1; 
-    marker.color.r = 0.2431;
-    marker.color.g = 0.1843;
-    marker.color.b = 0.1529;
-    vis_pub.publish( marker );
-
-//ENVIO DE COORDENADAS
-    move_base_msgs::MoveBaseGoal goal;
-    //Send the goal to the robot (Global Map)
-    geometry_msgs::Quaternion angle_quat = tf::createQuaternionMsgFromYaw(0.0);     
-    goal.target_pose.header.frame_id = "map"; 
-    goal.target_pose.header.stamp = ros::Time::now();    
-    goal.target_pose.pose.position.x = posicionx; // vertex_web[current_vertex].x;
-    goal.target_pose.pose.position.y = posiciony; // vertex_web[current_vertex].y;  
-    goal.target_pose.pose.orientation = angle_quat; //doesn't matter really.
-    ac->sendGoal(goal, boost::bind(&PatrolAgent::goalDoneCallback, this, _1, _2), boost::bind(&PatrolAgent::goalActiveCallback,this), boost::bind(&PatrolAgent::goalFeedbackCallback, this,_1));  
-    ac->waitForResult();
-
-    derecha=false;
-    zanjas++; }
-    else{
-//COMPROBACION DE SI ES IDA O VUELTA
-    if (ida==false){
-    desplazamientoy=-9 ;
-    desplazamientox=-1.35;
-    ida= true;
-  
-    }
-    else {
-    desplazamientoy=9;
-    desplazamientox=1.35;
-    ida=false;
-    }
-
-//DIBUJO DE LINEAS
-    visualization_msgs::Marker marker;
-    marker.header.frame_id = "map";
-    marker.header.stamp = ros::Time();
-    marker.ns = "my_namespace";
-    marker.id = zanjas+((ID_ROBOT+1)*100);
-    marker.type = visualization_msgs::Marker::LINE_STRIP;
-    marker.action = visualization_msgs::Marker::ADD;
-    marker.pose.orientation.w = 1.0;
-    float corx;
-    float cory;
-    for (uint32_t i = 0; i < 10; ++i){
-        geometry_msgs::Point p;
-        
-        if (ida==true){
-            cory=target_y+9-i;
-            corx=posicionx-(0.15*i);
-
-        }
-        else{
-            corx=posicionx+(0.15*i);
-            cory=target_y+i;
-        }
-        
-        p.x=corx;
-        p.y=cory;
-    marker.points.push_back(p);}
-    marker.scale.x = 0.2;
-    marker.scale.y = 1;
-    marker.scale.z = 1;
-    marker.color.a = 1; // Don't forget to set the alpha!
-    marker.color.r = 0.2431;
-    marker.color.g = 0.1843;
-    marker.color.b = 0.1529;
-    vis_pub.publish( marker ); 
-//CALCULO DE POSICION 
-    posiciony=posiciony+desplazamientoy;
-    posicionx=posicionx+desplazamientox;
-
-
-//ENVION DE COORDENADAS
-    move_base_msgs::MoveBaseGoal goal;
-    //Send the goal to the robot (Global Map)
-    geometry_msgs::Quaternion angle_quat = tf::createQuaternionMsgFromYaw(0.0);     
-    goal.target_pose.header.frame_id = "map"; 
-    goal.target_pose.header.stamp = ros::Time::now();    
-    goal.target_pose.pose.position.x = posicionx; // vertex_web[current_vertex].x;
-    goal.target_pose.pose.position.y = posiciony; // vertex_web[current_vertex].y;  
-    goal.target_pose.pose.orientation = angle_quat; //doesn't matter really.
-    ac->sendGoal(goal, boost::bind(&PatrolAgent::goalDoneCallback, this, _1, _2), boost::bind(&PatrolAgent::goalActiveCallback,this), boost::bind(&PatrolAgent::goalFeedbackCallback, this,_1));  
-    ac->waitForResult();
-
-    derecha=true;
-    zanjas++;
-    
-    }
-    
-    }
-    }    
+       
 // PRUEBA DE VIDEO ENVIO DE PRIMERA PUNTO A MANO
     
     //devolver proximo vertex tendo em conta apenas as idlenesses;
+    if (extraalg==1){
+    
     next_vertex=route[ID_ROBOT+1][numerot];
+    }
+    else {
+        next_vertex=compute_next_vertex();
+    }
 
     //printf("Move Robot to Vertex %d (%f,%f)\n", next_vertex, vertex_web[next_vertex].x, vertex_web[next_vertex].y);
     ROS_INFO("Next vertex %d",next_vertex);
@@ -780,6 +539,7 @@ void PatrolAgent::onGoalComplete(){
         //Cambio de grafo
     
     goal_complete = false;  
+    
 
 }
 void PatrolAgent::InitialDisplay(){
@@ -870,6 +630,7 @@ for (int i=0;i<chargePoints;i++){
 
 
 }
+
 
 void PatrolAgent::onGoalNotComplete()
 {   
@@ -1043,6 +804,7 @@ void PatrolAgent::goalDoneCallback(const actionlib::SimpleClientGoalState &state
         delay.sleep();
         ROS_INFO("Goal reached ... DONE");
 
+
     
         std_msgs::Float64MultiArray distance_robot;
            
@@ -1051,7 +813,8 @@ void PatrolAgent::goalDoneCallback(const actionlib::SimpleClientGoalState &state
         distance_robot.data.push_back(Dt[ID_ROBOT]);
         distance_pub.publish (distance_robot);
         Dt[ID_ROBOT]=0;
-        goal_complete = true;
+        goalreached=true;
+        
     }else{
         aborted_count++;
         ROS_INFO("CANCELLED or ABORTED... %d",aborted_count);   //tentar voltar a enviar goal..
@@ -1100,6 +863,162 @@ void PatrolAgent::goalFeedbackCallback(const move_base_msgs::MoveBaseFeedbackCon
     int value = ID_ROBOT;
     if (value==-1){ value = 0;}
     interference = check_interference(value);    
+}
+
+void PatrolAgent::DisplayWorking(){
+//CAMBIO DE MENSAJE A REALIZANDO UNA TAREA
+    visualization_msgs::Marker marker;
+    std::string test="Tractor "+std::to_string(ID_ROBOT)+" is working";
+    marker.header.frame_id = "map";
+    marker.header.stamp = ros::Time();
+    marker.ns = "my_namespace";
+    marker.id = (ID_ROBOT)+2;
+    marker.type = visualization_msgs::Marker::TEXT_VIEW_FACING;
+    marker.action = visualization_msgs::Marker::ADD;
+    marker.pose.position.x = 0;
+    marker.pose.position.y = -(ID_ROBOT*5+5);
+    marker.pose.orientation.w = 1.0;
+    marker.scale.z = 3;
+    marker.color.a = 1; 
+    marker.color.r = 1;
+    marker.color.g = 1;
+    marker.color.b = 1;
+    marker.text = test;
+    vis_pub.publish( marker );
+    
+    
+    bool derecha=true;
+    
+    double target_x = vertex_web[next_vertex].x,
+           target_y = vertex_web[next_vertex].y;
+    double desplazamientoy,desplazamientox;
+    double posicionx;
+    double posiciony;
+
+    posicionx=target_x;
+    posiciony=target_y;
+
+//COMIENZO DE TAREA
+    for(int i=0;i<10;i++){ 
+    ROS_INFO("PRUEBA 2") ;
+//PRIMERA DERECHA
+    if (derecha==true){
+
+//CALCULO DE POSICIÓN A MOVER
+    posicionx=posicionx+0.5;
+    posiciony=posiciony;
+//DIBUJO LINEA DE DERECHA
+
+    visualization_msgs::Marker marker;
+    marker.header.frame_id = "map";
+    marker.header.stamp = ros::Time();
+    marker.ns = "my_namespace";
+    marker.id = zanjas+((ID_ROBOT+1)*100);
+    marker.type = visualization_msgs::Marker::LINE_STRIP;
+    marker.action = visualization_msgs::Marker::MODIFY;
+    marker.pose.orientation.w = 1.0;
+    for (uint32_t i = 0; i < 2; i++){
+        geometry_msgs::Point p;
+        p.x=posicionx-(i*0.5);
+        p.y=posiciony;
+        marker.points.push_back(p);}
+    marker.scale.x = 0.2;
+    marker.scale.y = 1;
+    marker.scale.z = 1;
+    marker.color.a = 1; 
+    marker.color.r = 0.2431;
+    marker.color.g = 0.1843;
+    marker.color.b = 0.1529;
+    vis_pub.publish( marker );
+
+//ENVIO DE COORDENADAS
+
+    move_base_msgs::MoveBaseGoal goal;
+    //Send the goal to the robot (Global Map)
+    geometry_msgs::Quaternion angle_quat = tf::createQuaternionMsgFromYaw(0.0);     
+    goal.target_pose.header.frame_id = "map"; 
+    goal.target_pose.header.stamp = ros::Time::now();    
+    goal.target_pose.pose.position.x = posicionx; // vertex_web[current_vertex].x;
+    goal.target_pose.pose.position.y = posiciony; // vertex_web[current_vertex].y;  
+    goal.target_pose.pose.orientation = angle_quat; //doesn't matter really.
+    ac->sendGoal(goal, boost::bind(&PatrolAgent::goalDoneCallback, this, _1, _2), boost::bind(&PatrolAgent::goalActiveCallback,this), boost::bind(&PatrolAgent::goalFeedbackCallback, this,_1));  
+    ac->waitForResult();
+
+    derecha=false;
+    zanjas++; }
+    else{
+//COMPROBACION DE SI ES IDA O VUELTA
+    if (ida==false){
+    desplazamientoy=-9 ;
+    desplazamientox=-1.35;
+    ida= true;
+  
+    }
+    else {
+    desplazamientoy=9;
+    desplazamientox=1.35;
+    ida=false;
+    }
+
+//DIBUJO DE LINEAS
+    visualization_msgs::Marker marker;
+    marker.header.frame_id = "map";
+    marker.header.stamp = ros::Time();
+    marker.ns = "my_namespace";
+    marker.id = zanjas+((ID_ROBOT+1)*100);
+    marker.type = visualization_msgs::Marker::LINE_STRIP;
+    marker.action = visualization_msgs::Marker::ADD;
+    marker.pose.orientation.w = 1.0;
+    float corx;
+    float cory;
+    for (uint32_t i = 0; i < 10; ++i){
+        geometry_msgs::Point p;
+        
+        if (ida==true){
+            cory=target_y+9-i;
+            corx=posicionx-(0.15*i);
+
+        }
+        else{
+            corx=posicionx+(0.15*i);
+            cory=target_y+i;
+        }
+        
+        p.x=corx;
+        p.y=cory;
+    marker.points.push_back(p);}
+    marker.scale.x = 0.2;
+    marker.scale.y = 1;
+    marker.scale.z = 1;
+    marker.color.a = 1; // Don't forget to set the alpha!
+    marker.color.r = 0.2431;
+    marker.color.g = 0.1843;
+    marker.color.b = 0.1529;
+    vis_pub.publish( marker ); 
+//CALCULO DE POSICION 
+    posiciony=posiciony+desplazamientoy;
+    posicionx=posicionx+desplazamientox;
+
+
+//ENVION DE COORDENADAS
+    move_base_msgs::MoveBaseGoal goal;
+    //Send the goal to the robot (Global Map)
+    geometry_msgs::Quaternion angle_quat = tf::createQuaternionMsgFromYaw(0.0);     
+    goal.target_pose.header.frame_id = "map"; 
+    goal.target_pose.header.stamp = ros::Time::now();    
+    goal.target_pose.pose.position.x = posicionx; // vertex_web[current_vertex].x;
+    goal.target_pose.pose.position.y = posiciony; // vertex_web[current_vertex].y;  
+    goal.target_pose.pose.orientation = angle_quat; //doesn't matter really.
+    ac->sendGoal(goal, boost::bind(&PatrolAgent::goalDoneCallback, this, _1, _2), boost::bind(&PatrolAgent::goalActiveCallback,this), boost::bind(&PatrolAgent::goalFeedbackCallback, this,_1));  
+    ac->waitForResult();
+
+    derecha=true;
+    zanjas++;
+    }
+    }
+goal_complete = true;
+goalreached=false;
+    
 }
 
 void PatrolAgent::send_goal_reached() {
@@ -1238,9 +1157,21 @@ void PatrolAgent::send_positions()
 
     msg.pose.pose.position.x = xPos[idx]; //send odometry.x
     msg.pose.pose.position.y = yPos[idx]; //send odometry.y
-  
+
+    unity_robotics_demo_msgs::XCordenate msg1;
+    msg1.id=idx;
+    msg1.pos_x = xPos[idx];
+    msg1.pos_z= yPos[idx];
+    msg1.pos_y=1;
+
+  positions_unity_pub.publish(msg1);
     positions_pub.publish(msg);
     ros::spinOnce();
+
+
+
+
+
 }
 
 

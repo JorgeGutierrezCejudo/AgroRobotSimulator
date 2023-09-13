@@ -1,4 +1,4 @@
 clock: 
-  secs: 35
-  nsecs: 400000000
+  secs: 47
+  nsecs: 700000000
 ---

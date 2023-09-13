@@ -48,6 +48,8 @@
 #include <std_msgs/Float64MultiArray.h>
 #include <python3.8/Python.h>
 
+
+
 #define PyUnicode_FromString PyUnicodeUCS4_FromString
 #include "getgraph.h"
 #define PY_SSIZE_T_CLEAN
@@ -118,6 +120,8 @@ protected:
     ros::Publisher cmd_vel_pub;
     ros::Publisher distance_pub;
     ros::Publisher vis_pub;
+    ros::Publisher positions_unity_pub;
+    ros::Subscriber positions_unity_sub;
     
 public:
     
@@ -154,6 +158,7 @@ public:
     void backup();
     
     void InitialDisplay(); //Display of fist markers
+    void DisplayWorking();
     void onGoalNotComplete(); // what to do when a goal has NOT been reached (aborted)
     
     // Events

@@ -1,7 +1,7 @@
 [Config]
 map: grid
-nrobots: 4
-algorithm: SEBS
+nrobots: 2
+algorithm: RAND
 locmode: AMCL
 navmode: ros
 gwait: 0

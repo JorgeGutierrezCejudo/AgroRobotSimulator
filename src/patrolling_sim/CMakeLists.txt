@@ -9,11 +9,23 @@ find_package(catkin REQUIRED COMPONENTS
   move_base_msgs
   nav_msgs
   roscpp
-#  rospy
+  rospy
   roslib
   tf
+  ros_tcp_endpoint
   message_generation
+  geometry_msgs
+  std_msgs
+  unity_robotics_demo_msgs
 )
+
+add_message_files(FILES
+    PosRot.msg
+    UnityColor.msg
+    XCordenate.msg
+)
+
+
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -71,6 +83,7 @@ add_service_files(
 ## Generate added messages and services with any dependencies listed here
  generate_messages(
    DEPENDENCIES
+   geometry_msgs
    std_msgs
  )
 
@@ -192,6 +205,7 @@ target_link_libraries(GoToStartPos ${catkin_LIBRARIES})
 add_executable(idlHistogram src/idlHistogram.cpp)
 ## Specify libraries to link a library or executable target against
 target_link_libraries(idlHistogram ${catkin_LIBRARIES})
+
 
 
 ## Add cmake target dependencies of the executable/library

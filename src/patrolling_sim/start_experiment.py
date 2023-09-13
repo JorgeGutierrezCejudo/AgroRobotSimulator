@@ -29,7 +29,9 @@ Alg_names = [
         [ 'SEBS', 'SEBS' ],
         [ 'CBLS', 'CBLS' ],
         [ 'DTAG', 'DTAGreedy' ],
-        [ 'DTAP', 'DTASSIPart' ]
+        [ 'DTAP', 'DTASSIPart' ],
+        [ 'ATA', 'Aitor_TaskAllocation']
+
      ]
 
 Map_names = ['cumberland','example','grid','ls1r5','broughton','DIAG_labs','DIAG_floor1']   
@@ -154,6 +156,11 @@ def run_experiment(MAP, NROBOTS, INITPOS, ALG_SHORT, LOC_MODE, NAV_MODULE, GWAIT
     os.system('sleep 1')
 
     cmd_monitor = 'rosrun patrolling_sim monitor '+MAP+' '+ALG_SHORT+' '+NROBOTS+' '+str(GRAFO_NUMBER)
+
+    if (ALG_SHORT=='ATA'):
+        cmd_monitor = 'rosrun patrolling_sim monitor '+MAP+' '+'RAND'+' '+NROBOTS+' '+str(GRAFO_NUMBER)
+
+        
     custom_stage = ''
     if (CUSTOM_STAGE=="true"):
       custom_stage = ' custom_stage:=true'
@@ -207,6 +214,8 @@ def run_experiment(MAP, NROBOTS, INITPOS, ALG_SHORT, LOC_MODE, NAV_MODULE, GWAIT
             cmd = 'bash -c \'rosrun patrolling_sim '+ALG+' __name:=patrol_robot'+str(i)+' '+MAP+' '+str(i)+" "+str(GRAFO_NUMBER)+' MSP/'+MAP+'/'+MAP+'_'+str(NROBOTS)+'_'+str(i)+' '+'\''
         elif (ALG_SHORT=='GBS' or ALG_SHORT=='SEBS' or ALG_SHORT=='CBLS'):
             cmd = 'bash -c \'rosrun patrolling_sim '+ALG+' __name:=patrol_robot'+str(i)+' '+MAP+' '+str(i)+" "+str(GRAFO_NUMBER)+' '+str(NROBOTS)+'\''
+        elif (ALG_SHORT=='ATA'):
+            cmd = 'bash -c \'rosrun patrolling_sim '+'Random'+' __name:=patrol_robot'+str(i)+' '+MAP+' '+str(i)+" "+str(GRAFO_NUMBER)+' '+str(NROBOTS)+' '+str(1)+'\'' 
         else:
             now = datetime.datetime.now()
             dateString = now.strftime("%Y-%m-%d-%H:%M")

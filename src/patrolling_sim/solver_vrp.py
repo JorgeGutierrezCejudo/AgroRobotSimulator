@@ -23,7 +23,6 @@ def define_init_graph(input_data):
     for l in lines[1:-1]:
 
         parts = l.split()
-        print(parts)
         field_graph.add_edge(int(parts[0]), int(parts[1]), cost = float(parts[2]))
         field_graph.add_edge(int(parts[1]), int(parts[0]), cost = float(parts[2]))
 
