@@ -1,4 +1,4 @@
-# Agro robots simulators ( Unity-INtegration
+# Agro robots simulators ( Unity-Integration)
 
 In this branch you will find the Agro_SIM package integrated with Unity, through the package designed by Unity Tecnology ROS- TCP-Endpoint. To configure Unity correctly and to integrate the necessary packages see: [Unity-Robotics-Hub](https://github.com/Unity-Technologies/Unity-Robotics-Hub.git).
 
