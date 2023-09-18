@@ -19,3 +19,8 @@ To start a simulation:
 ```
    roscd patrolling_sim;python3 start_experiment.py
 ```
+To start a the conexion with Unity:
+
+```
+   roslaunch ros_tcp_endpoint endpoint.launch tcp_ip:=127.0.0.1 tcp_port:=10000
+```
