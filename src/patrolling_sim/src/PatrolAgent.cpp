@@ -1160,6 +1160,7 @@ void PatrolAgent::send_positions()
 
     unity_robotics_demo_msgs::XCordenate msg1;
     msg1.id=idx;
+    msg1.num=NumberRobots;
     msg1.pos_x = xPos[idx];
     msg1.pos_z= yPos[idx];
     msg1.pos_y=1;

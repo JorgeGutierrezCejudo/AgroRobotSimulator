@@ -6,4 +6,4 @@ locmode: AMCL
 navmode: ros
 gwait: 0
 term: gnome-terminal
-grafo: PY_VAR12
+grafo: PY_VAR11
