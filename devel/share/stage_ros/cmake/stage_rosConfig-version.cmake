@@ -1,1 +1,0 @@
-/home/jorgeurjc/Documentos/AgroRobotSimulator/devel/.private/stage_ros/share/stage_ros/cmake/stage_rosConfig-version.cmake

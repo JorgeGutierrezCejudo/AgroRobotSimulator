@@ -1,1 +1,0 @@
-/home/jorgeurjc/Documentos/AgroRobotSimulator/devel/.private/rviz_textured_quads/share/common-lisp/ros/rviz_textured_quads/msg/_package_TexturedQuad.lisp

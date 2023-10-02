@@ -1,1 +1,0 @@
-/home/jorgeurjc/Documentos/AgroRobotSimulator/devel/.private/rviz_textured_quads/share/roseus/ros/rviz_textured_quads/manifest.l

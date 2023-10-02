@@ -1,1 +1,0 @@
-/home/jorgeurjc/Documentos/AgroRobotSimulator/devel/.private/patrolling_sim/share/roseus/ros/patrolling_sim/srv/GoToStartPosSrv.l

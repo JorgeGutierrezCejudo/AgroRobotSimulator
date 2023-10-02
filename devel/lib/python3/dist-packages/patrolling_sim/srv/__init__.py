@@ -1,1 +1,0 @@
-/home/jorgeurjc/Documentos/AgroRobotSimulator/devel/.private/patrolling_sim/lib/python3/dist-packages/patrolling_sim/srv/__init__.py
