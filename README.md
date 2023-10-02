@@ -48,7 +48,9 @@ The GrafoCostInfo.txt file will give the algorithm information about the number 
 To use this repository you should note that you need to install Gurobi Optimizer.If you already have Guroby installed and licensed, you can use ATA algortihm.
 
 ## Rviz textured quads
-This ROS package has only been used for the Grid map. This package adds a plugin to RVIZ to be able to include an image. If you want to start it, open a terminal and enter:
+This ROS package has only been used for the Grid map. This package adds a plugin to RVIZ to be able to include an image. For more information: [rviz_textured_quads](https://github.com/lucasw/rviz_textured_quads.git)
+
+If you want to start it, open a terminal and enter:
 ```
 roscd rviz_textured_quads/tests; python3 display_images_test.py
 ```
