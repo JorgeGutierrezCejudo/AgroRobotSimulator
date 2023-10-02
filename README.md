@@ -46,3 +46,9 @@ Included in this package is the ATA algorithm, which is included in a completely
 The GrafoCostInfo.txt file will give the algorithm information about the number of tasks, the number of robots and the cost of reaching each task. On the other hand, the file solution.txt gives the solution to the problem, i.e. the route to be taken by each robot.
 
 To use this repository you should note that you need to install Gurobi Optimizer.If you already have Guroby installed and licensed, you can use ATA algortihm.
+
+## Rviz textured quads
+This ROS package has only been used for the Grid map. This package adds a plugin to RVIZ to be able to include an image. If you want to start it, open a terminal and enter:
+```
+roscd rviz_textured_quads/tests; python3 display_images_test.py
+```
