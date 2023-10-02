@@ -155,11 +155,10 @@ def run_experiment(MAP, NROBOTS, INITPOS, ALG_SHORT, LOC_MODE, NAV_MODULE, GWAIT
     print(cmd)
     os.system('sleep 1')
 
-    cmd_monitor = 'rosrun patrolling_sim monitor '+MAP+' '+ALG_SHORT+' '+NROBOTS+' '+str(GRAFO_NUMBER)
-
-    if (ALG_SHORT=='ATA'):
-        cmd_monitor = 'rosrun patrolling_sim monitor '+MAP+' '+'RAND'+' '+NROBOTS+' '+str(GRAFO_NUMBER)
-
+    if(ALG_SHORT=='ATA'):
+        cmd_monitor = 'rosrun patrolling_sim monitor '+MAP+' '+ALG_SHORT+' '+NROBOTS+' '+str(GRAFO_NUMBER)+' '+str(1)
+    else:
+        cmd_monitor = 'rosrun patrolling_sim monitor '+MAP+' '+ALG_SHORT+' '+NROBOTS+' '+str(GRAFO_NUMBER)+' '+str(0)
         
     custom_stage = ''
     if (CUSTOM_STAGE=="true"):
@@ -213,14 +212,14 @@ def run_experiment(MAP, NROBOTS, INITPOS, ALG_SHORT, LOC_MODE, NAV_MODULE, GWAIT
         if (ALG_SHORT=='MSP'):
             cmd = 'bash -c \'rosrun patrolling_sim '+ALG+' __name:=patrol_robot'+str(i)+' '+MAP+' '+str(i)+" "+str(GRAFO_NUMBER)+' MSP/'+MAP+'/'+MAP+'_'+str(NROBOTS)+'_'+str(i)+' '+'\''
         elif (ALG_SHORT=='GBS' or ALG_SHORT=='SEBS' or ALG_SHORT=='CBLS'):
-            cmd = 'bash -c \'rosrun patrolling_sim '+ALG+' __name:=patrol_robot'+str(i)+' '+MAP+' '+str(i)+" "+str(GRAFO_NUMBER)+' '+str(NROBOTS)+'\''
+            cmd = 'bash -c \'rosrun patrolling_sim '+ALG+' __name:=patrol_robot'+str(i)+' '+MAP+' '+str(i)+" "+str(GRAFO_NUMBER)+' '+str(NROBOTS)+' '+str(0)+'\''
         elif (ALG_SHORT=='ATA'):
             cmd = 'bash -c \'rosrun patrolling_sim '+'Random'+' __name:=patrol_robot'+str(i)+' '+MAP+' '+str(i)+" "+str(GRAFO_NUMBER)+' '+str(NROBOTS)+' '+str(1)+'\'' 
         else:
             now = datetime.datetime.now()
             dateString = now.strftime("%Y-%m-%d-%H:%M")
             #cmd = 'bash -c \'rosrun patrolling_sim '+ALG+' __name:=patrol_robot'+str(i)+' '+MAP+' '+str(i)+' > logs/'+ALG+'-'+dateString+'-robot'+str(i)+'.log \''
-            cmd = 'bash -c \'rosrun patrolling_sim '+ALG+' __name:=patrol_robot'+str(i)+' '+MAP+' '+str(i)+" "+str(GRAFO_NUMBER)+" "+str(NROBOTS)+'\''
+            cmd = 'bash -c \'rosrun patrolling_sim '+ALG+' __name:=patrol_robot'+str(i)+' '+MAP+' '+str(i)+" "+str(GRAFO_NUMBER)+" "+str(NROBOTS)+' '+str(0)+'\''
         print(cmd)
         if (TERM == 'xterm'):
 	        os.system('xterm -e  "'+cmd+'" &')
@@ -270,7 +269,8 @@ def run_experiment(MAP, NROBOTS, INITPOS, ALG_SHORT, LOC_MODE, NAV_MODULE, GWAIT
 class DIP(tk.Frame):
     def __init__(self, parent):
         tk.Frame.__init__(self, parent) 
-        self.parent = parent        
+        self.parent = parent  
+        self.grafo=0      
         self.initUI()
 
         

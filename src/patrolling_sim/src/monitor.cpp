@@ -93,6 +93,7 @@ bool initialize = true; // Initialization flag
 bool goto_start_pos = false; //default: robots already start in right position
 uint cnt=0;  // Count number of robots connected
 uint teamsize;
+int extraalg;
 bool init_robots[NUM_MAX_ROBOTS];
 double last_goal_reached[NUM_MAX_ROBOTS];
 
@@ -165,8 +166,6 @@ void CostRouteCB (std_msgs::Float64MultiArray msg){
     //     i++;    // }
 
 }
-
-
 
 
 void dolog(const char *str) {
@@ -456,14 +455,22 @@ double Median( double *a, uint dimension )
 
 uint calculate_patrol_cycle ( int *nr_visits, uint dimension ){
   dolog("    calculate_patrol_cycle - begin");
-  uint result = INT_MAX;
+  uint result;
+
+  if (extraalg==1){
+    if (nr_visits[0]==teamsize){
+      result=1;
+    }
+  }
+  else {
+
+  result = INT_MAX;
   uint imin=0;
   for (uint i=0; i<dimension; i++){
     if ((uint)nr_visits[i] < result){
       result = nr_visits[i]; imin=i;
     }
-  }
-
+  }}
 
   //printf("  --- complete patrol: visits of %d : %d\n",imin,result);
   dolog("    calculate_patrol_cycle - end");
@@ -541,6 +548,9 @@ void write_results (double *avg_idleness, double *stddev_idleness, int *number_o
 	fprintf(file,"   max = %.1f\n", max_idleness);
 
     fprintf(file,"\nCost info\n");
+    for (int i=0; i<teamsize; i++){
+    fprintf(file,"   Robot %d travel :%f\n",i,Distancia[i]);
+    }
     fprintf(file,"   Robot %d travel the most:%f\n",robot_more,more_distance);
     fprintf(file,"   Robot %d travel the lest:%f\n",robot_less,less_distance);
     fprintf(file,"   Total distance travel of all robots: %f\n",totalcost);
@@ -683,6 +693,7 @@ int main(int argc, char** argv){  //pass TEAMSIZE GRAPH ALGORITHM
 //   uint teamsize;
   char teamsize_str[3];
   teamsize = atoi(argv[3]);
+  extraalg=atoi(argv[5]);
   
   if ( teamsize >= NUM_MAX_ROBOTS || teamsize <1 ){
     ROS_INFO("The Teamsize must be an integer number between 1 and %d", NUM_MAX_ROBOTS);
@@ -971,7 +982,7 @@ int main(int argc, char** argv){  //pass TEAMSIZE GRAPH ALGORITHM
 
         float valor;
         more_distance=0;
-        less_distance=1000;
+        less_distance=100000;
       
 
         for (int i=0;i<teamsize;i++){

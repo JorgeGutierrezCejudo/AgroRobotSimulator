@@ -4,7 +4,10 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /Local Costmap1
+        - /Path11
+        - /Robot Footprint11
+        - /Path12
+        - /Robot Footprint12
       Splitter Ratio: 0.5
     Tree Height: 1576
   - Class: rviz/Selection
@@ -218,6 +221,270 @@ Visualization Manager:
       Unreliable: false
       Value: true
     - Alpha: 0.699999988079071
+      Buffer Length: 1
+      Class: rviz/Path
+      Color: 255; 200; 25
+      Enabled: true
+      Head Diameter: 0.30000001192092896
+      Head Length: 0.20000000298023224
+      Length: 0.30000001192092896
+      Line Style: Lines
+      Line Width: 0.029999999329447746
+      Name: Path
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Pose Color: 255; 85; 25
+      Pose Style: None
+      Queue Size: 10
+      Radius: 0.029999999329447746
+      Shaft Diameter: 0.10000000149011612
+      Shaft Length: 0.10000000149011612
+      Topic: /robot_4/move_base/NavfnROS/plan
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Class: rviz/Polygon
+      Color: 255; 200; 25
+      Enabled: true
+      Name: Robot Footprint
+      Queue Size: 10
+      Topic: /robot_4/move_base/global_costmap/footprint
+      Unreliable: false
+      Value: true
+    - Alpha: 0.699999988079071
+      Buffer Length: 1
+      Class: rviz/Path
+      Color: 255; 25; 100
+      Enabled: true
+      Head Diameter: 0.30000001192092896
+      Head Length: 0.20000000298023224
+      Length: 0.30000001192092896
+      Line Style: Lines
+      Line Width: 0.029999999329447746
+      Name: Path
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Pose Color: 255; 85; 255
+      Pose Style: None
+      Queue Size: 10
+      Radius: 0.029999999329447746
+      Shaft Diameter: 0.10000000149011612
+      Shaft Length: 0.10000000149011612
+      Topic: /robot_5/move_base/NavfnROS/plan
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Class: rviz/Polygon
+      Color: 255; 25; 100
+      Enabled: true
+      Name: Robot Footprint
+      Queue Size: 10
+      Topic: /robot_5/move_base/global_costmap/footprint
+      Unreliable: false
+      Value: true
+    - Alpha: 0.699999988079071
+      Buffer Length: 1
+      Class: rviz/Path
+      Color: 25; 255; 100
+      Enabled: true
+      Head Diameter: 0.30000001192092896
+      Head Length: 0.20000000298023224
+      Length: 0.30000001192092896
+      Line Style: Lines
+      Line Width: 0.029999999329447746
+      Name: Path
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Pose Color: 255; 85; 255
+      Pose Style: None
+      Queue Size: 10
+      Radius: 0.029999999329447746
+      Shaft Diameter: 0.10000000149011612
+      Shaft Length: 0.10000000149011612
+      Topic: /robot_6/move_base/NavfnROS/plan
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Class: rviz/Polygon
+      Color: 25; 255; 100
+      Enabled: true
+      Name: Robot Footprint
+      Queue Size: 10
+      Topic: /robot_6/move_base/global_costmap/footprint
+      Unreliable: false
+      Value: true
+    - Alpha: 0.699999988079071
+      Buffer Length: 1
+      Class: rviz/Path
+      Color: 25; 25; 150
+      Enabled: true
+      Head Diameter: 0.30000001192092896
+      Head Length: 0.20000000298023224
+      Length: 0.30000001192092896
+      Line Style: Lines
+      Line Width: 0.029999999329447746
+      Name: Path
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Pose Color: 255; 85; 255
+      Pose Style: None
+      Queue Size: 10
+      Radius: 0.029999999329447746
+      Shaft Diameter: 0.10000000149011612
+      Shaft Length: 0.10000000149011612
+      Topic: /robot_7/move_base/NavfnROS/plan
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Class: rviz/Polygon
+      Color: 25; 25; 150
+      Enabled: true
+      Name: Robot Footprint
+      Queue Size: 10
+      Topic: /robot_7/move_base/global_costmap/footprint
+      Unreliable: false
+      Value: true
+    - Alpha: 0.699999988079071
+      Buffer Length: 1
+      Class: rviz/Path
+      Color: 100; 100; 100
+      Enabled: true
+      Head Diameter: 0.30000001192092896
+      Head Length: 0.20000000298023224
+      Length: 0.30000001192092896
+      Line Style: Lines
+      Line Width: 0.029999999329447746
+      Name: Path
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Pose Color: 255; 85; 255
+      Pose Style: None
+      Queue Size: 10
+      Radius: 0.029999999329447746
+      Shaft Diameter: 0.10000000149011612
+      Shaft Length: 0.10000000149011612
+      Topic: /robot_8/move_base/NavfnROS/plan
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Class: rviz/Polygon
+      Color: 100; 100; 100
+      Enabled: true
+      Name: Robot Footprint
+      Queue Size: 10
+      Topic: /robot_8/move_base/global_costmap/footprint
+      Unreliable: false
+      Value: true
+    - Alpha: 0.699999988079071
+      Buffer Length: 1
+      Class: rviz/Path
+      Color: 245; 121; 0
+      Enabled: true
+      Head Diameter: 0.30000001192092896
+      Head Length: 0.20000000298023224
+      Length: 0.30000001192092896
+      Line Style: Lines
+      Line Width: 0.029999999329447746
+      Name: Path
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Pose Color: 255; 85; 255
+      Pose Style: None
+      Queue Size: 10
+      Radius: 0.029999999329447746
+      Shaft Diameter: 0.10000000149011612
+      Shaft Length: 0.10000000149011612
+      Topic: /robot_9/move_base/NavfnROS/plan
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Class: rviz/Polygon
+      Color: 245; 121; 0
+      Enabled: true
+      Name: Robot Footprint
+      Queue Size: 10
+      Topic: /robot_6/move_base/global_costmap/footprint
+      Unreliable: false
+      Value: true
+    - Alpha: 0.699999988079071
+      Buffer Length: 1
+      Class: rviz/Path
+      Color: 92; 53; 102
+      Enabled: true
+      Head Diameter: 0.30000001192092896
+      Head Length: 0.20000000298023224
+      Length: 0.30000001192092896
+      Line Style: Lines
+      Line Width: 0.029999999329447746
+      Name: Path
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Pose Color: 255; 85; 255
+      Pose Style: None
+      Queue Size: 10
+      Radius: 0.029999999329447746
+      Shaft Diameter: 0.10000000149011612
+      Shaft Length: 0.10000000149011612
+      Topic: /robot_10/move_base/NavfnROS/plan
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Class: rviz/Polygon
+      Color: 92; 53; 102
+      Enabled: true
+      Name: Robot Footprint
+      Queue Size: 10
+      Topic: /robot_10/move_base/global_costmap/footprint
+      Unreliable: false
+      Value: true
+    - Alpha: 0.699999988079071
+      Buffer Length: 1
+      Class: rviz/Path
+      Color: 143; 89; 2
+      Enabled: true
+      Head Diameter: 0.30000001192092896
+      Head Length: 0.20000000298023224
+      Length: 0.30000001192092896
+      Line Style: Lines
+      Line Width: 0.029999999329447746
+      Name: Path
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Pose Color: 255; 85; 255
+      Pose Style: None
+      Queue Size: 10
+      Radius: 0.029999999329447746
+      Shaft Diameter: 0.10000000149011612
+      Shaft Length: 0.10000000149011612
+      Topic: /robot_11/move_base/NavfnROS/plan
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Class: rviz/Polygon
+      Color: 143; 89; 2
+      Enabled: true
+      Name: Robot Footprint
+      Queue Size: 10
+      Topic: /robot_11/move_base/global_costmap/footprint
+      Unreliable: false
+      Value: true
+    - Alpha: 0.699999988079071
       Class: rviz/Map
       Color Scheme: costmap
       Draw Behind: false
@@ -232,7 +499,7 @@ Visualization Manager:
       Marker Topic: visualization_marker
       Name: Marker
       Namespaces:
-        my_namespace: true
+        {}
       Queue Size: 100
       Value: true
     - Alpha: 1
@@ -278,7 +545,7 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Angle: 6.290005683898926
+      Angle: 6.300005912780762
       Class: rviz/TopDownOrtho
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
@@ -288,7 +555,7 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 26.090736389160156
+      Scale: 31.116844177246094
       Target Frame: <Fixed Frame>
       X: 49.08224868774414
       Y: 24.7034854888916
@@ -309,5 +576,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 3840
-  X: 0
+  X: 3408
   Y: 0

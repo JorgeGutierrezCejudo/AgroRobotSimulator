@@ -67,7 +67,7 @@ protected:
     
     int TEAMSIZE;
     int ID_ROBOT;
-    int route[10][10] {};
+    int route[NUM_MAX_ROBOTS][20] {};
 
     double xPos[NUM_MAX_ROBOTS]; //tabelas de posições (atençao ao index pro caso de 1 so robot)
     double yPos[NUM_MAX_ROBOTS]; //tabelas de posições (atençao ao index pro caso de 1 so robot)
@@ -120,8 +120,6 @@ protected:
     ros::Publisher cmd_vel_pub;
     ros::Publisher distance_pub;
     ros::Publisher vis_pub;
-    ros::Publisher positions_unity_pub;
-    ros::Subscriber positions_unity_sub;
     
 public:
     
@@ -144,6 +142,11 @@ public:
     void getRobotPose(int robotid, float &x, float &y, float &theta);
     void odomCB(const nav_msgs::Odometry::ConstPtr& msg);
     
+    void finish_simulation();
+    void FinishDoneCallback(const actionlib::SimpleClientGoalState &state, const move_base_msgs::MoveBaseResultConstPtr &result);
+    void FinishActiveCallback();
+    void FinishFeedbackCallback(const move_base_msgs::MoveBaseFeedbackConstPtr &feedback);
+
     void sendGoal(int next_vertex);
     void cancelGoal();
     

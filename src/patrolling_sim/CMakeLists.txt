@@ -12,11 +12,9 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   roslib
   tf
-  ros_tcp_endpoint
   message_generation
   geometry_msgs
   std_msgs
-  unity_robotics_demo_msgs
 )
 
 add_message_files(FILES

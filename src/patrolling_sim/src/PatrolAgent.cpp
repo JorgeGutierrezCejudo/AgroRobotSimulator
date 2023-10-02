@@ -53,13 +53,14 @@
 #include "PatrolAgent.h"
 #include <visualization_msgs/Marker.h> 
 #include <cmath>
-#include <unity_robotics_demo_msgs/XCordenate.h>
+#include <cstdlib>
+#include <stdio.h>
 
 
 
 using namespace std;
 bool change ;
-int numerot = 0;
+int numerot = 1;
 bool ida=true;
 int zanjas=20;
 int terreno=1;
@@ -68,6 +69,7 @@ int GrafoNumber;
 int Numero=2;
 int extraalg;
 bool goalreached=false;
+int ini=0;
 
 
 #define DELTA_TIME_SEQUENTIAL_START 15
@@ -108,7 +110,8 @@ void PatrolAgent::init(int argc, char** argv) {
 
     NumberRobots=atoi(argv[5]);
 
-    extraalg=0;
+
+    extraalg=atoi(argv[6]);
 
     ///     Aqui pondriamos las distintas funciones en funcion de el grafo
     
@@ -283,7 +286,7 @@ void PatrolAgent::init(int argc, char** argv) {
     //Subscrever posições de outros robots
     positions_sub = nh.subscribe<nav_msgs::Odometry>("positions", 10, boost::bind(&PatrolAgent::positionsCB, this, _1));  
 
-    positions_unity_pub = nh.advertise<unity_robotics_demo_msgs::XCordenate>("posicion", 1);
+    
 
     
     char string1[40];
@@ -462,12 +465,11 @@ void PatrolAgent::run() {
 
 // Initial marker for RVIZ
 
-    InitialDisplay();
+    //InitialDisplay();
 
         if (goal_complete) {
             onGoalComplete();  // can be redefined
             resend_goal_count=0;
-            numerot++;
         }
         else { // goal not complete (active)
             if (interference) {
@@ -476,11 +478,17 @@ void PatrolAgent::run() {
             
             if (ResendGoal) {
                 //Send the goal to the robot (Global Map)
-                if (resend_goal_count<20) {
+                if (resend_goal_count<3 && extraalg!=1) {
                     resend_goal_count++;
                     ROS_INFO("Re-Sending goal (%d) - Vertex %d (%f,%f)", resend_goal_count, next_vertex, vertex_web[next_vertex].x, vertex_web[next_vertex].y);
                     sendGoal(next_vertex);
                 }
+                if (resend_goal_count<30 && extraalg==1) {
+                    resend_goal_count++;
+                    ROS_INFO("Re-Sending goal (%d) - Vertex %d (%f,%f)", resend_goal_count, next_vertex, vertex_web[next_vertex].x, vertex_web[next_vertex].y);
+                    sendGoal(next_vertex);
+                }
+                
                 else {
                     resend_goal_count=0;
                     onGoalNotComplete();
@@ -491,12 +499,12 @@ void PatrolAgent::run() {
             processEvents();
             
             if (end_simulation) {
-                return;
+                finish_simulation();
             }
         } 
 
         if (goalreached){
-        DisplayWorking();
+        //DisplayWorking();
         }
 
         
@@ -518,8 +526,7 @@ void PatrolAgent::onGoalComplete(){
     
     //devolver proximo vertex tendo em conta apenas as idlenesses;
     if (extraalg==1){
-    
-    next_vertex=route[ID_ROBOT+1][numerot];
+    next_vertex=route[ID_ROBOT+1][numerot+1];
     }
     else {
         next_vertex=compute_next_vertex();
@@ -528,8 +535,13 @@ void PatrolAgent::onGoalComplete(){
     //printf("Move Robot to Vertex %d (%f,%f)\n", next_vertex, vertex_web[next_vertex].x, vertex_web[next_vertex].y);
     ROS_INFO("Next vertex %d",next_vertex);
     /** SEND GOAL (REACHED) AND INTENTION **/
-    send_goal_reached(); // Send TARGET to monitor
-    send_results();  // Algorithm specific function
+    if (ini==0){
+        ini=1;
+    }
+    else{
+        send_goal_reached();
+        send_results();  // Algorithm specific function
+    }
 
     //Send the goal to the robot (Global Map)
     ROS_INFO("Sending goal - Vertex %d (%f,%f)\n", next_vertex, vertex_web[next_vertex].x, vertex_web[next_vertex].y);
@@ -621,19 +633,23 @@ for (int i=0;i<chargePoints;i++){
     //only if using a MESH_RESOURCE marker type:
     vis_pub.publish( marker );
 
-    
-
-
-
-
-
-
-
 }
 
 
 void PatrolAgent::onGoalNotComplete()
 {   
+    //Robot block in the depot
+
+
+    if (extraalg==1 && next_vertex==0){
+        ROS_INFO("Robot blocked in the depot");
+        end_simulation= true;
+        ResendGoal = false;
+        goal_complete = false; 
+        current_vertex=next_vertex;
+        send_goal_reached();
+    }  
+    else {
     int prev_vertex = next_vertex;
     
     ROS_INFO("Goal not complete - From vertex %d to vertex %d\n", current_vertex, next_vertex);   
@@ -658,12 +674,13 @@ void PatrolAgent::onGoalNotComplete()
         ROS_INFO("Choosing another random vertex %d\n", next_vertex);
     }
 
+
     //Send the goal to the robot (Global Map)
     ROS_INFO("Re-Sending NEW goal - Vertex %d (%f,%f)\n", next_vertex, vertex_web[next_vertex].x, vertex_web[next_vertex].y);
     //sendGoal(vertex_web[next_vertex].x, vertex_web[next_vertex].y);  
     sendGoal(next_vertex);  // send to move_base
     
-    goal_complete = false;    
+    goal_complete = false;  } 
 }
 
 
@@ -762,6 +779,39 @@ void PatrolAgent::odomCB(const nav_msgs::Odometry::ConstPtr& msg) { //colocar pr
     
 //  printf("Posicao colocada em Pos[%d]\n",idx);
 }
+void PatrolAgent::finish_simulation() {
+
+    //Define Goal:
+    move_base_msgs::MoveBaseGoal goal;
+    //Send the goal to the robot (Global Map)
+    geometry_msgs::Quaternion angle_quat = tf::createQuaternionMsgFromYaw(0.0);     
+    goal.target_pose.header.frame_id = "map"; 
+    goal.target_pose.header.stamp = ros::Time::now();    
+    goal.target_pose.pose.position.x = 38+ID_ROBOT; // vertex_web[current_vertex].x;
+    goal.target_pose.pose.position.y = 19.2; // vertex_web[current_vertex].y;  
+    goal.target_pose.pose.orientation = angle_quat; //doesn't matter really.
+    ac->sendGoal(goal, boost::bind(&PatrolAgent::FinishDoneCallback, this, _1, _2), boost::bind(&PatrolAgent::FinishActiveCallback,this), boost::bind(&PatrolAgent::FinishFeedbackCallback, this,_1));
+
+}
+
+void PatrolAgent::FinishDoneCallback(const actionlib::SimpleClientGoalState &state, const move_base_msgs::MoveBaseResultConstPtr &result){
+
+    ROS_INFO("ROBOT IN THE DEPOSIT");
+    ResendGoal = false;
+    end_simulation=false;
+    exit(-1);
+}
+
+void PatrolAgent::FinishActiveCallback(){ 
+    end_simulation=false;
+
+}
+
+void PatrolAgent::FinishFeedbackCallback(const move_base_msgs::MoveBaseFeedbackConstPtr &feedback){    
+}
+
+
+
 
 
 
@@ -791,6 +841,8 @@ void PatrolAgent::cancelGoal()
 }
 
 
+
+
 void PatrolAgent::goalDoneCallback(const actionlib::SimpleClientGoalState &state, const move_base_msgs::MoveBaseResultConstPtr &result){ //goal terminado (completo ou cancelado)
 //  ROS_INFO("Goal is complete (suceeded, aborted or cancelled).");
     // If the goal succeeded send a new one!
@@ -805,15 +857,27 @@ void PatrolAgent::goalDoneCallback(const actionlib::SimpleClientGoalState &state
         ROS_INFO("Goal reached ... DONE");
 
 
-    
+
         std_msgs::Float64MultiArray distance_robot;
            
         distance_robot.data.clear();
         distance_robot.data.push_back(ID_ROBOT);
         distance_robot.data.push_back(Dt[ID_ROBOT]);
         distance_pub.publish (distance_robot);
-        Dt[ID_ROBOT]=0;
+        Dt[ID_ROBOT+1]=0;
+
         goalreached=true;
+        goal_complete = true;
+        numerot++;
+
+         if (next_vertex==0 && extraalg==1){
+         //exit(-1);
+         end_simulation=true;
+         goal_complete=false;
+         current_vertex=next_vertex;
+         send_goal_reached();
+        }
+        
         
     }else{
         aborted_count++;
@@ -846,6 +910,7 @@ void PatrolAgent::goalDoneCallback(const actionlib::SimpleClientGoalState &state
 
             ROS_INFO("Resend Goal!");
             ResendGoal = true;
+
         }
     }
 
@@ -1018,7 +1083,7 @@ void PatrolAgent::DisplayWorking(){
     }
 goal_complete = true;
 goalreached=false;
-    
+     
 }
 
 void PatrolAgent::send_goal_reached() {
@@ -1026,12 +1091,14 @@ void PatrolAgent::send_goal_reached() {
     int value = ID_ROBOT;
     if (value==-1){ value = 0;}
     
+  
     // [ID,msg_type,vertex,intention,0]
     std_msgs::Int16MultiArray msg;   
     msg.data.clear();
     msg.data.push_back(value);
     msg.data.push_back(TARGET_REACHED_MSG_TYPE);
-    msg.data.push_back(current_vertex);
+    msg.data.push_back(current_vertex); 
+    
     //msg.data.push_back(next_vertex);
     //msg.data.push_back(0); //David Portugal: is this necessary?
     
@@ -1158,13 +1225,7 @@ void PatrolAgent::send_positions()
     msg.pose.pose.position.x = xPos[idx]; //send odometry.x
     msg.pose.pose.position.y = yPos[idx]; //send odometry.y
 
-    unity_robotics_demo_msgs::XCordenate msg1;
-    msg1.id=idx;
-    msg1.pos_x = xPos[idx];
-    msg1.pos_z= yPos[idx];
-    msg1.pos_y=1;
-
-  positions_unity_pub.publish(msg1);
+ 
     positions_pub.publish(msg);
     ros::spinOnce();
 

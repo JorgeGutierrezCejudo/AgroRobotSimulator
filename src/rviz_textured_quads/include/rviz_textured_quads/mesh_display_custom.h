@@ -76,7 +76,6 @@
 #include <Eigen/Geometry>
 
 #include <tf/tf.h>
-#include <tf_conversions/tf_eigen.h>
 #include <eigen_conversions/eigen_msg.h>
 
 #include <map>
