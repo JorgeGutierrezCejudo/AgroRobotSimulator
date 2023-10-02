@@ -1,0 +1,1 @@
+/home/jorgeurjc/Documentos/AgroRobotSimulator/devel/.private/rviz_textured_quads/share/gennodejs/ros/rviz_textured_quads/msg/TexturedQuadArray.js

@@ -1,9 +1,9 @@
 [Config]
-map: grid
-nrobots: 12
+map: example
+nrobots: 6
 algorithm: ATA
 locmode: AMCL
 navmode: ros
 gwait: 0
 term: gnome-terminal
-grafo: 0
+grafo: PY_VAR9

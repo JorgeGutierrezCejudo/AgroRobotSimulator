@@ -1,0 +1,6 @@
+devel_space: /home/jorgeurjc/Documentos/AgroRobotSimulator/devel
+install: false
+install_space: /home/jorgeurjc/Documentos/AgroRobotSimulator/install
+profile: default
+source_space: /home/jorgeurjc/Documentos/AgroRobotSimulator/src
+workspace: /home/jorgeurjc/Documentos/AgroRobotSimulator
