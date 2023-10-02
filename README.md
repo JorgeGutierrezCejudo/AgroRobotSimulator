@@ -46,7 +46,7 @@ Included in this package is the ATA algorithm, which is included in a completely
 ![Captura de pantalla de 2023-10-02 10-41-10](https://github.com/JorgeGutierrezCejudo/AgroRobotSimulator/assets/129373210/3489c25d-2619-443c-9ac3-97a2e813992f)
 
 
-The GrafoCostInfo.txt file will give the algorithm information about the number of tasks, the number of robots and the cost of reaching each task. On the other hand, the file solution.txt gives the solution to the problem, i.e. the route to be taken by each robot.We must take into account that for ATA node 0 is the deposit or zone where the robots end and start, so we have to take this fact into account when generating the graphs.
+The GrafoCostInfo.txt file will give the algorithm information about the number of tasks, the number of robots and the cost of reaching each task. On the other hand, the file solution.txt gives the solution to the problem, i.e. the route to be taken by each robot.We must take into account that for ATA node 0 is the deposit or zone where the robots end and start, so we have to take this fact into account when generating the graphs.Moreover, this algorithm is designed for the Grid map.
 
 To use this repository you should note that you need to install Gurobi Optimizer.If you already have Guroby installed and licensed, you can use ATA algortihm.
 
