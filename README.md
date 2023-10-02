@@ -40,7 +40,8 @@ It seems that in the pythom3.8 installation there is some problem with the inclu
 ## Algorithms included
 Included in this package is the ATA algorithm, which is included in a completely different way from the others. This is only a pythom script, which uses Gurobi as an optimiser. The communication between the simulator and the algorithm is shown in the following image:
 
-[Comunication Simulator-Algorith.pdf](https://github.com/JorgeGutierrezCejudo/AgroRobotSimulator/files/12781021/Comunication.Simulator-Algorith.pdf)
+![Captura de pantalla de 2023-10-02 10-41-10](https://github.com/JorgeGutierrezCejudo/AgroRobotSimulator/assets/129373210/3489c25d-2619-443c-9ac3-97a2e813992f)
+
 
 The GrafoCostInfo.txt file will give the algorithm information about the number of tasks, the number of robots and the cost of reaching each task. On the other hand, the file solution.txt gives the solution to the problem, i.e. the route to be taken by each robot.
 
