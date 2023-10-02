@@ -37,7 +37,11 @@ As a side note, this simulator is developed by installing the ros noetic desktop
 ### 2-Pythom 3.8
 It seems that in the pythom3.8 installation there is some problem with the includes. If during the installation there is a bug about them, check these issues: [initconfig.h](https://bugs.python.org/issue40642)
 
+## Algorithms included
+Included in this package is the ATA algorithm, which is included in a completely different way from the others. This is only a pythom script, which uses Gurobi as an optimiser. The communication between the simulator and the algorithm is shown in the following image:
 
+[Comunication Simulator-Algorith.pdf](https://github.com/JorgeGutierrezCejudo/AgroRobotSimulator/files/12781021/Comunication.Simulator-Algorith.pdf)
 
-To use this repository you should note that you need to install Gurobi Optimizer.
-If you already have Guroby installed and licensed, you must clone the repository and compolite with catkin_make
+The GrafoCostInfo.txt file will give the algorithm information about the number of tasks, the number of robots and the cost of reaching each task. On the other hand, the file solution.txt gives the solution to the problem, i.e. the route to be taken by each robot.
+
+To use this repository you should note that you need to install Gurobi Optimizer.If you already have Guroby installed and licensed, you can use ATA algortihm.
