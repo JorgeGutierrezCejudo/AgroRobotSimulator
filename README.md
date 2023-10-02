@@ -21,6 +21,7 @@ To start a simulation:
 
 ## Possible failures during installation 
 ### 1-Ros packages
+
 This ros package makes use of the **move_base**, **amcl** and **map_server** packages, so if you don't have them installed, you can install them through: 
 
 ```
@@ -35,9 +36,11 @@ This ros package makes use of the **move_base**, **amcl** and **map_server** pac
 As a side note, this simulator is developed by installing the ros noetic desktop full version. In case another type of installation was used, other ros packages may be required.
 
 ### 2-Pythom 3.8
+
 It seems that in the pythom3.8 installation there is some problem with the includes. If during the installation there is a bug about them, check these issues: [initconfig.h](https://bugs.python.org/issue40642)
 
 ## Algorithms included
+
 Included in this package is the ATA algorithm, which is included in a completely different way from the others. This is only a pythom script, which uses Gurobi as an optimiser. The communication between the simulator and the algorithm is shown in the following image:
 
 ![Captura de pantalla de 2023-10-02 10-41-10](https://github.com/JorgeGutierrezCejudo/AgroRobotSimulator/assets/129373210/3489c25d-2619-443c-9ac3-97a2e813992f)
@@ -48,6 +51,7 @@ The GrafoCostInfo.txt file will give the algorithm information about the number 
 To use this repository you should note that you need to install Gurobi Optimizer.If you already have Guroby installed and licensed, you can use ATA algortihm.
 
 ## Rviz textured quads
+
 This ROS package has only been used for the Grid map. This package adds a plugin to RVIZ to be able to include an image. For more information: [rviz_textured_quads](https://github.com/lucasw/rviz_textured_quads.git)
 
 If you want to start it, open a terminal and enter:
