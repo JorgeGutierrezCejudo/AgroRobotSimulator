@@ -33,6 +33,18 @@ def setIP(mapname,vip):
         f.write('</launch>\n')
         f.close()
 
+        fn = 'params/spawner/robot_'+str(i)+'_spawner.xml'
+        f = open(fn, 'w')
+        f.write('<launch>\n')
+        f.write('  <arg name="x" value="'+str(x)+'"/>\n')
+        f.write('  <arg name="y" value="'+str(y)+'"/>\n')
+        f.write('  <arg name="z" value="'+str(0.15)+'"/>\n')
+        f.write('  <arg name="yaw" value="'+str(radians(th))+'"/>\n')
+        f.write('  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-urdf -model robot_'+str(i)+' -param robot_description -x $(arg x) -y $(arg y) -z $(arg z) -R 0 -P 0 -Y $(arg yaw)"/>\n')
+        f.write('</launch>\n')
+        f.close()
+
+
         fr.write('crobot( pose [ '+str(x)+'  '+str(y)+'  0  '+str(th)+' ]   name "robot'+str(i)+'"  color "'+colors[i]+'")\n')
         
 

@@ -12,11 +12,9 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   roslib
   tf
-  ros_tcp_endpoint
   message_generation
   geometry_msgs
   std_msgs
-  unity_robotics_demo_msgs
 )
 
 add_message_files(FILES
@@ -196,6 +194,12 @@ add_executable(monitor src/monitor.cpp src/getgraph.cpp)
 add_dependencies(monitor ${PROJECT_NAME}_gencpp)
 ## Specify libraries to link a library or executable target against
 target_link_libraries(monitor ${catkin_LIBRARIES})
+
+## Declare a cpp executable 
+add_executable(monitorV1 src/monitorV1.cpp)
+add_dependencies(monitorV1 ${PROJECT_NAME}_gencpp)
+## Specify libraries to link a library or executable target against
+target_link_libraries(monitorV1 ${catkin_LIBRARIES})
 
 add_executable(GoToStartPos src/GoToStartPos.cpp)
 add_dependencies(GoToStartPos ${PROJECT_NAME}_gencpp)

@@ -34,11 +34,11 @@ Alg_names = [
 
      ]
 
-Map_names = ['cumberland','example','grid','ls1r5','broughton','DIAG_labs','DIAG_floor1']   
+Map_names = ['cumberland','example','grid','1r5','broughton','DIAG_labs','DIAG_floor1','vineyard']   
 
 NRobots_list = ['1','2','4','6','8','10','12']
 
-LocalizationMode_list = ['AMCL','fake_localization']
+LocalizationMode_list = ['AMCL','fake_localization','perfect_localization','erkf_localization']
 
 NavigationMode_list = ['ros','spqrel_navigation']
 
@@ -49,6 +49,8 @@ CommDelay_list = ['0','0.2','1','2']
 LostMsgRate_list = ['0','0.1','0.2','0.3']
 
 Terminal_list = ['gnome-terminal','xterm']
+
+Simulator_list = ["stage","gazebo"]
 
 
 initPoses = {}
@@ -103,7 +105,7 @@ def getSimulationRunning():
 # Terminates if simulation is stopped (/simulation_running param is false)
 # or if timeout is reached (if this is >0)
 # CUSTOM_STAGE: use of extended API for stage (requires custom stage and stage_ros).
-def run_experiment(MAP, NROBOTS, INITPOS, ALG_SHORT, LOC_MODE, NAV_MODULE, GWAIT, COMMDELAY,GRAFO_NUMBER,TERM, TIMEOUT, CUSTOM_STAGE, SPEEDUP):
+def run_experiment(MAP, NROBOTS, INITPOS, ALG_SHORT, LOC_MODE, NAV_MODULE, GWAIT, COMMDELAY,TERM,SIMULATOR,GRAFO_NUMBER,TIMEOUT, CUSTOM_STAGE, SPEEDUP):
 
     ALG = findAlgName(ALG_SHORT)
     print("Run the experiment")
@@ -116,6 +118,7 @@ def run_experiment(MAP, NROBOTS, INITPOS, ALG_SHORT, LOC_MODE, NAV_MODULE, GWAIT
     print("Goal wait time ", GWAIT)
     print("Communication delay ",COMMDELAY)
     print("Terminal ",TERM)
+    print("Grafo number ",SIMULATOR)
     print("Timeout ",TIMEOUT)
     print("Custom Stage ",CUSTOM_STAGE)
     print("Simulator speed-up ",SPEEDUP)
@@ -155,16 +158,19 @@ def run_experiment(MAP, NROBOTS, INITPOS, ALG_SHORT, LOC_MODE, NAV_MODULE, GWAIT
     print(cmd)
     os.system('sleep 1')
 
-    cmd_monitor = 'rosrun patrolling_sim monitor '+MAP+' '+ALG_SHORT+' '+NROBOTS+' '+str(GRAFO_NUMBER)
-
-    if (ALG_SHORT=='ATA'):
-        cmd_monitor = 'rosrun patrolling_sim monitor '+MAP+' '+'RAND'+' '+NROBOTS+' '+str(GRAFO_NUMBER)
-
+    if(ALG_SHORT=='ATA'):
+        cmd_monitor = 'rosrun patrolling_sim monitor '+MAP+' '+ALG_SHORT+' '+NROBOTS+' '+str(GRAFO_NUMBER)+' '+str(1)
+    else:
+        cmd_monitor = 'rosrun patrolling_sim monitor '+MAP+' '+ALG_SHORT+' '+NROBOTS+' '+str(GRAFO_NUMBER)+' '+str(0)
         
     custom_stage = ''
     if (CUSTOM_STAGE=="true"):
       custom_stage = ' custom_stage:=true'
-    cmd_stage = 'roslaunch patrolling_sim map.launch map:='+MAP+custom_stage
+    if (SIMULATOR=="gazebo"):
+        cmd_stage = 'roslaunch map2gazebo gazebo_world.launch mapname:='+MAP
+    else:
+        cmd_stage = 'roslaunch patrolling_sim map.launch map:='+MAP+custom_stage
+ 
     if (os.getenv('ROS_DISTRO')=='groovy'):
       cmd_stage = cmd_stage + " stage_pkg:=stage"
     print(cmd_monitor)
@@ -176,35 +182,145 @@ def run_experiment(MAP, NROBOTS, INITPOS, ALG_SHORT, LOC_MODE, NAV_MODULE, GWAIT
         os.system('gnome-terminal --tab -e  "bash -c \''+cmd_monitor+'\'" --tab -e "bash -c \''+cmd_stage+'\'" &')
     
     os.system('sleep 3')
-    
-    # Start robots
-    if (LOC_MODE == 'AMCL'):
-        robot_launch = 'robot.launch'
-    else:
-        robot_launch = 'robot_fake_loc.launch'
-    
+
     gcmd = 'gnome-terminal '
-    for i in range(0,int(NROBOTS)):
-        print("Run robot ",i)
-        cmd = 'bash -c \'roslaunch patrolling_sim '+robot_launch+' robotname:=robot_'+str(i)+' mapname:='+MAP+' '
+    # Start robots
+    if (SIMULATOR=="gazebo"):
+
+        if (LOC_MODE == 'perfect_localization'):
+            for i in range(0,int(NROBOTS)):
+                print("Run robot ",i)
+                cmd = 'bash -c \'roslaunch warthog_gazebo multi_warthog.launch robotname:=robot_'+str(i)+' '+'use_perfect:="true"'
+
+                cmd = cmd + "'"
+                print(cmd)
+                if (TERM == 'xterm'):
+                    os.system('xterm -e  "'+cmd+'" &')
+                os.system('sleep 1')
+                gcmd = gcmd + ' --tab -e "'+cmd+'" '
+            gcmd = gcmd + '&'
+            
+            if (TERM == 'gnome-terminal'):
+            #print gcmd
+                os.system(gcmd)
+            os.system('sleep 5') 
+            
+            gcmd = 'gnome-terminal '
+            for i in range(0,int(NROBOTS)):
+                print("Run amcl ",i)
+                cmd = 'bash -c \'roslaunch navigation amcl.launch robotname:=robot_'+str(i)+''+' mapname:='+MAP
+                
+                cmd = cmd + "'"
+                print(cmd)
+                if (TERM == 'xterm'):
+                    os.system('xterm -e  "'+cmd+'" &')
+                os.system('sleep 1')
+                gcmd = gcmd + ' --tab -e "'+cmd+'" '
+            gcmd = gcmd + '&'
+            if (TERM == 'gnome-terminal'):
+            #print gcmd
+                os.system(gcmd)
+            os.system('sleep 5')   
+
+        elif (LOC_MODE == 'erkf_localization'):
+            for i in range(0,int(NROBOTS)):
+                print("Run robot ",i)
+                cmd = 'bash -c \'roslaunch warthog_gazebo multi_warthog.launch robotname:=robot_'+str(i)+''
+
+                cmd = cmd + "'"
+                print(cmd)
+                if (TERM == 'xterm'):
+                    os.system('xterm -e  "'+cmd+'" &')
+                os.system('sleep 1')
+                gcmd = gcmd + ' --tab -e "'+cmd+'" '
+            gcmd = gcmd + '&'
+
+            if (TERM == 'gnome-terminal'):
+            #print gcmd
+                os.system(gcmd)
+            os.system('sleep 5') 
+            
+            gcmd = 'gnome-terminal '
+            for i in range(0,int(NROBOTS)):
+                print("Run amcl ",i)
+                cmd = 'bash -c \'roslaunch navigation amcl.launch robotname:=robot_'+str(i)+''+' mapname:='+MAP
+                
+                cmd = cmd + "'"
+                print(cmd)
+                if (TERM == 'xterm'):
+                    os.system('xterm -e  "'+cmd+'" &')
+                os.system('sleep 1')
+                gcmd = gcmd + ' --tab -e "'+cmd+'" '
+            gcmd = gcmd + '&'
+            if (TERM == 'gnome-terminal'):
+            #print gcmd
+                os.system(gcmd)
+            os.system('sleep 5')   
+        else: 
+            for i in range(0,int(NROBOTS)):
+                print("Run robot ",i)
+                cmd = 'bash -c \'roslaunch warthog_gazebo multi_warthog.launch robotname:=robot_'+str(i)+''
+
+                cmd = cmd + "'"
+                print(cmd)
+                if (TERM == 'xterm'):
+                    os.system('xterm -e  "'+cmd+'" &')
+                os.system('sleep 1')
+                gcmd = gcmd + ' --tab -e "'+cmd+'" '
+            gcmd = gcmd + '&'
+            
+            if (TERM == 'gnome-terminal'):
+            #print gcmd
+                os.system(gcmd)
+            os.system('sleep 5') 
+            
+            gcmd = 'gnome-terminal '
+            for i in range(0,int(NROBOTS)):
+                print("Run amcl ",i)
+                cmd = 'bash -c \'roslaunch navigation amcl.launch robotname:=robot_'+str(i)+' '+'use_amcl:="true"'+' mapname:='+MAP
+                
+                cmd = cmd + "'"
+                print(cmd)
+                if (TERM == 'xterm'):
+                    os.system('xterm -e  "'+cmd+'" &')
+                os.system('sleep 1')
+                gcmd = gcmd + ' --tab -e "'+cmd+'" '
+            gcmd = gcmd + '&'
+            if (TERM == 'gnome-terminal'):
+            #print gcmd
+                os.system(gcmd)
+            os.system('sleep 5')   
+
+    else:
+        if (LOC_MODE == 'AMCL'):
+            robot_launch = 'robot.launch'
+        else:
+            robot_launch = 'robot_fake_loc.launch'
         
-        # Set navigation modules
-        if (NAV_MODULE=="ros"):
-           cmd = cmd + ' use_amcl:=true use_move_base:=true '
-        elif (NAV_MODULE=="spqrel_navigation"):
-           cmd = cmd + ' use_amcl:=false use_move_base:=false use_srrg_localizer:=true use_spqrel_planner:=true '
-           
-        cmd = cmd + "'"
-        print(cmd)
-        if (TERM == 'xterm'):
-            os.system('xterm -e  "'+cmd+'" &')
-        os.system('sleep 1')
-        gcmd = gcmd + ' --tab -e "'+cmd+'" '
-    gcmd = gcmd + '&'
-    if (TERM == 'gnome-terminal'):
-	#print gcmd
-	    os.system(gcmd)
-    os.system('sleep 5')    
+        gcmd = 'gnome-terminal '
+        for i in range(0,int(NROBOTS)):
+            print("Run robot ",i)
+            cmd = 'bash -c \'roslaunch patrolling_sim '+robot_launch+' robotname:=robot_'+str(i)+' mapname:='+MAP+' '
+            
+            # Set navigation modules
+            if (NAV_MODULE=="ros"):
+                cmd = cmd + ' use_amcl:=true use_move_base:=true '
+            elif (NAV_MODULE=="spqrel_navigation"):
+                cmd = cmd + ' use_amcl:=false use_move_base:=false use_srrg_localizer:=true use_spqrel_planner:=true '
+            
+            cmd = cmd + "'"
+            print(cmd)
+            if (TERM == 'xterm'):
+                os.system('xterm -e  "'+cmd+'" &')
+            os.system('sleep 1')
+            gcmd = gcmd + ' --tab -e "'+cmd+'" '
+        gcmd = gcmd + '&'
+        if (TERM == 'gnome-terminal'):
+        #print gcmd
+            os.system(gcmd)
+        os.system('sleep 5')
+
+
         
     # Start patrol behaviors
     gcmd = 'gnome-terminal '
@@ -213,14 +329,14 @@ def run_experiment(MAP, NROBOTS, INITPOS, ALG_SHORT, LOC_MODE, NAV_MODULE, GWAIT
         if (ALG_SHORT=='MSP'):
             cmd = 'bash -c \'rosrun patrolling_sim '+ALG+' __name:=patrol_robot'+str(i)+' '+MAP+' '+str(i)+" "+str(GRAFO_NUMBER)+' MSP/'+MAP+'/'+MAP+'_'+str(NROBOTS)+'_'+str(i)+' '+'\''
         elif (ALG_SHORT=='GBS' or ALG_SHORT=='SEBS' or ALG_SHORT=='CBLS'):
-            cmd = 'bash -c \'rosrun patrolling_sim '+ALG+' __name:=patrol_robot'+str(i)+' '+MAP+' '+str(i)+" "+str(GRAFO_NUMBER)+' '+str(NROBOTS)+'\''
+            cmd = 'bash -c \'rosrun patrolling_sim '+ALG+' __name:=patrol_robot'+str(i)+' '+MAP+' '+str(i)+" "+str(GRAFO_NUMBER)+' '+str(NROBOTS)+' '+str(0)+'\''
         elif (ALG_SHORT=='ATA'):
             cmd = 'bash -c \'rosrun patrolling_sim '+'Random'+' __name:=patrol_robot'+str(i)+' '+MAP+' '+str(i)+" "+str(GRAFO_NUMBER)+' '+str(NROBOTS)+' '+str(1)+'\'' 
         else:
             now = datetime.datetime.now()
             dateString = now.strftime("%Y-%m-%d-%H:%M")
             #cmd = 'bash -c \'rosrun patrolling_sim '+ALG+' __name:=patrol_robot'+str(i)+' '+MAP+' '+str(i)+' > logs/'+ALG+'-'+dateString+'-robot'+str(i)+'.log \''
-            cmd = 'bash -c \'rosrun patrolling_sim '+ALG+' __name:=patrol_robot'+str(i)+' '+MAP+' '+str(i)+" "+str(GRAFO_NUMBER)+" "+str(NROBOTS)+'\''
+            cmd = 'bash -c \'rosrun patrolling_sim '+ALG+' __name:=patrol_robot'+str(i)+' '+MAP+' '+str(i)+" "+str(GRAFO_NUMBER)+" "+str(NROBOTS)+' '+str(0)+'\''
         print(cmd)
         if (TERM == 'xterm'):
 	        os.system('xterm -e  "'+cmd+'" &')
@@ -270,7 +386,8 @@ def run_experiment(MAP, NROBOTS, INITPOS, ALG_SHORT, LOC_MODE, NAV_MODULE, GWAIT
 class DIP(tk.Frame):
     def __init__(self, parent):
         tk.Frame.__init__(self, parent) 
-        self.parent = parent        
+        self.parent = parent  
+        self.grafo=0      
         self.initUI()
 
         
@@ -284,13 +401,13 @@ class DIP(tk.Frame):
         self.parent.title("MRP Experiment Launcher")
         self.style = Style()
         self.style.theme_use("alt")
-        self.parent.resizable(width=FALSE, height=False)
+        self.parent.resizable(width=FALSE, height=True)
         self.pack(fill=BOTH, expand=1)
         
-        self.columnconfigure(1, weight=1)
-        self.columnconfigure(3, pad=7)
-        self.rowconfigure(3, weight=1)
-        self.rowconfigure(7, pad=7)
+        self.columnconfigure(2, weight=1)
+        self.columnconfigure(4, pad=7)
+        self.rowconfigure(15, weight=3)
+        self.rowconfigure(19, pad=16)
 
         _row = 0
         
@@ -395,13 +512,27 @@ class DIP(tk.Frame):
   
         _row = _row + 1
 
+        lbl = Label(self, text="Simulator")
+        lbl.grid(sticky=W, row = _row, column= 0, pady=4, padx=5)
+
+        self.simulator_list = Simulator_list
+        self.simulator_ddm = StringVar(self)
+        try:
+            lastsimulator=self.oldConfigs["simulator"]
+        except:
+            lastsimulator=self.simulator_list[0]
+        self.simulator_ddm.set(lastsimulator)
+        tk.OptionMenu(self, self.simulator_ddm, *self.simulator_list).grid(sticky=W, row=_row, column=1, pady=4, padx=5)
+  
+        _row = _row + 1
+
         launchButton=Checkbutton(self,text="Charging Node",variable=self.CharginPoints,onvalue=1, offvalue=0,command=self.selecion)
         launchButton.grid(sticky=W, row=_row, column=0, pady=4, padx=5)
 
         launchButton=Checkbutton(self,text="Tools implemention",variable=self.Tools,onvalue=1, offvalue=0,command=self.selecion)
         launchButton.grid(sticky=W, row=_row, column=1, pady=4, padx=5)
 
-        _row = _row + 6
+        _row = _row + 4
 
         launchButton = Button(self, text="Start Experiment",command=self.launch_script)
         launchButton.grid(sticky=W, row=_row, column=0, pady=4, padx=5)
@@ -413,7 +544,7 @@ class DIP(tk.Frame):
     def launch_script(self):
         self.saveConfigFile();
         self.selecion();
-        _thread.start_new_thread( run_experiment, (self.map_ddm.get(), self.robots_ddm.get(), INITPOS_DEFAULT, self.alg_ddm.get(),self.locmode_ddm.get(), self.navmode_ddm.get(), self.gwait_ddm.get(), COMMDELAY_DEFAULT,self.grafo.get(),self.term_ddm.get(),0,"false",1.0))
+        _thread.start_new_thread( run_experiment, (self.map_ddm.get(), self.robots_ddm.get(), INITPOS_DEFAULT, self.alg_ddm.get(),self.locmode_ddm.get(), self.navmode_ddm.get(), self.gwait_ddm.get(), COMMDELAY_DEFAULT,self.term_ddm.get(),self.simulator_ddm.get(),self.grafo.get(),0,"false",1.0))
 
     
     def quit(self):
@@ -447,6 +578,7 @@ class DIP(tk.Frame):
       f.write("navmode: %s\n"%self.navmode_ddm.get())
       f.write("gwait: %s\n"%self.gwait_ddm.get())
       f.write("term: %s\n"%self.term_ddm.get())
+      f.write("simulator: %s\n"%self.simulator_ddm.get())
       f.write("grafo: %s\n"%self.grafo)
       f.close()
 
@@ -473,7 +605,7 @@ def main():
     root.mainloop() 
   elif (len(sys.argv)<10):
     print("Use: ",sys.argv[0])
-    print(" or  ",sys.argv[0],' <map> <n.robots> <init_pos> <alg_short> <loc_mode> <nav_module> <goal_wait_time> <communication_delay><grafo><terminal> <timeout> [<custom_stage_flag>|def:false] [<sim_speedup>|def:1.0]')
+    print(" or  ",sys.argv[0],' <map> <n.robots> <init_pos> <alg_short> <loc_mode> <nav_module> <goal_wait_time> <communication_delay><terminal><simulator><grafo><timeout> [<custom_stage_flag>|def:false] [<sim_speedup>|def:1.0]')
 
   else:
     MAP = sys.argv[1]
@@ -484,19 +616,18 @@ def main():
     NAV_MODULE = sys.argv[6]
     GWAIT = sys.argv[7]
     COMMDELAY = sys.argv[8]
-    TERM = sys.argv[10]
-    GRAFO_NUMBER=sys.argv[9]
-    TIMEOUT = int(sys.argv[11])
+    TERM = sys.argv[9]
+    SIMULATOR=sys.arg[10]
+    GRAFO_NUMBER=sys.argv[11]
+    TIMEOUT = int(sys.argv[12])
     CUSTOM_STAGE = False
     SPEEDUP = 1.0
-    if (len(sys.argv)>=13):
-      CUSTOM_STAGE = sys.argv[12]
     if (len(sys.argv)>=14):
-      SPEEDUP = float(sys.argv[13])
+      CUSTOM_STAGE = sys.argv[13]
+    if (len(sys.argv)>=15):
+      SPEEDUP = float(sys.argv[14])
 
-    run_experiment(MAP, NROBOTS, INITPOS, ALG_SHORT, LOC_MODE, NAV_MODULE, GWAIT, COMMDELAY, GRAFO_NUMBER,TERM,TIMEOUT, CUSTOM_STAGE,SPEEDUP)
-
- 
+    run_experiment(MAP, NROBOTS, INITPOS, ALG_SHORT, LOC_MODE, NAV_MODULE, GWAIT, COMMDELAY,TERM,SIMULATOR,GRAFO_NUMBER,TIMEOUT, CUSTOM_STAGE,SPEEDUP)
 
 
 if __name__ == '__main__':

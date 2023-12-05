@@ -1,9 +1,10 @@
 [Config]
-map: grid
-nrobots: 2
-algorithm: RAND
-locmode: AMCL
+map: vineyard
+nrobots: 4
+algorithm: ATA
+locmode: perfect_localization
 navmode: ros
 gwait: 0
 term: gnome-terminal
-grafo: PY_VAR11
+simulator: stage
+grafo: 0
