@@ -18,10 +18,6 @@ To start a simulation:
 ```
    roscd patrolling_sim;python3 start_experiment.py
 ```
-To start a the conexion with Unity:
-
-```
-   roslaunch ros_tcp_endpoint endpoint.launch tcp_ip:=127.0.0.1 tcp_port:=10000
-```
+To simulate with Gazebo you need to select Gazebo as simulator.
 
 It is important that is not a final version, there are some features and thing that we are developing rigth now.
