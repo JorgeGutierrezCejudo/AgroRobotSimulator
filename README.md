@@ -1,7 +1,6 @@
-# Agro robots simulators ( Unity-Integration)
+# Agro robots simulators ( AgroSim+Gazebo)
 
-In this branch you will find the Agro_SIM package integrated with Unity, through the package designed by Unity Tecnology ROS- TCP-Endpoint. To configure Unity correctly and to integrate the necessary packages see: [Unity-Robotics-Hub](https://github.com/Unity-Technologies/Unity-Robotics-Hub.git).
-
+In this branch you will find the Agro_SIM package integrated with Gazebo. All maps avalaible in the main menu are genereted the Gazeboś version. 
 
 To use this repository you should note that you need to install Gurobi Optimizer.
 If you already have Guroby installed and licensed, you must clone the repository and compolite with catkin_make
@@ -24,3 +23,5 @@ To start a the conexion with Unity:
 ```
    roslaunch ros_tcp_endpoint endpoint.launch tcp_ip:=127.0.0.1 tcp_port:=10000
 ```
+
+It is important that is not a final version, there are some features and thing that we are developing rigth now.
