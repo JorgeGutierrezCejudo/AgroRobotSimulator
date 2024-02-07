@@ -1,8 +1,1 @@
-prefix=/home/jorgeurjc/Jorge_ws/devel
-
-Name: patrolling_sim
-Description: Description of patrolling_sim
-Version: 2.2.4
-Cflags: -I/home/jorgeurjc/Jorge_ws/devel/include -I/home/jorgeurjc/Jorge_ws/src/patrolling_sim/src
-Libs: -L${prefix}/lib -lPatrolAgent -lSSIPatrolAgent
-Requires: 
+/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/lib/pkgconfig/patrolling_sim.pc

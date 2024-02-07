@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/jorgeurjc/Jorge_ws/devel/lib/patrolling_sim/Conscientious_Cognitive"
-  "/home/jorgeurjc/Jorge_ws/devel/lib/patrolling_sim/Conscientious_Cognitive.pdb"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/lib/patrolling_sim/Conscientious_Cognitive"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/lib/patrolling_sim/Conscientious_Cognitive.pdb"
   "CMakeFiles/Conscientious_Cognitive.dir/src/Conscientious_Cognitive_Agent.cpp.o"
 )
 

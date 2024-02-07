@@ -1,6 +1,1 @@
-(cl:in-package patrolling_sim-srv)
-(cl:export '(TEAMSIZE-VAL
-          TEAMSIZE
-          SLEEP_BETWEEN_GOALS-VAL
-          SLEEP_BETWEEN_GOALS
-))
+/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/share/common-lisp/ros/patrolling_sim/srv/_package_GoToStartPosSrv.lisp

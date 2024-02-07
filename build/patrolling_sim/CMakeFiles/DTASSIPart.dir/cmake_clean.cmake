@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/jorgeurjc/Jorge_ws/devel/lib/patrolling_sim/DTASSIPart"
-  "/home/jorgeurjc/Jorge_ws/devel/lib/patrolling_sim/DTASSIPart.pdb"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/lib/patrolling_sim/DTASSIPart"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/lib/patrolling_sim/DTASSIPart.pdb"
   "CMakeFiles/DTASSIPart.dir/src/DTASSIPart_Agent.cpp.o"
 )
 

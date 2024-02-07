@@ -1,5 +1,8 @@
 file(REMOVE_RECURSE
-  "/home/jorgeurjc/Jorge_ws/devel/include/patrolling_sim/GoToStartPosSrv.h"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/include/patrolling_sim/GoToStartPosSrv.h"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/include/patrolling_sim/PosRot.h"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/include/patrolling_sim/UnityColor.h"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/include/patrolling_sim/XCordenate.h"
   "CMakeFiles/patrolling_sim_generate_messages_cpp"
 )
 

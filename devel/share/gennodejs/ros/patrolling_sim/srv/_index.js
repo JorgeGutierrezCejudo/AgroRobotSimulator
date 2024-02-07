@@ -1,8 +1,1 @@
-
-"use strict";
-
-let GoToStartPosSrv = require('./GoToStartPosSrv.js')
-
-module.exports = {
-  GoToStartPosSrv: GoToStartPosSrv,
-};
+/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/share/gennodejs/ros/patrolling_sim/srv/_index.js

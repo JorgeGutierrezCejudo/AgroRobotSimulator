@@ -1,5 +1,8 @@
 file(REMOVE_RECURSE
-  "/home/jorgeurjc/Jorge_ws/devel/share/common-lisp/ros/patrolling_sim/srv/GoToStartPosSrv.lisp"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/share/common-lisp/ros/patrolling_sim/msg/PosRot.lisp"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/share/common-lisp/ros/patrolling_sim/msg/UnityColor.lisp"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/share/common-lisp/ros/patrolling_sim/msg/XCordenate.lisp"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/share/common-lisp/ros/patrolling_sim/srv/GoToStartPosSrv.lisp"
   "CMakeFiles/patrolling_sim_generate_messages_lisp"
 )
 

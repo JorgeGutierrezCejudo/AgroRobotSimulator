@@ -1,8 +1,1 @@
-prefix=/home/jorgeurjc/Jorge_ws/devel
-
-Name: stage_ros
-Description: Description of stage_ros
-Version: 1.8.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
+/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/stage_ros/lib/pkgconfig/stage_ros.pc

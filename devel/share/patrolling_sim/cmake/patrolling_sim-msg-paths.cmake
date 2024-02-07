@@ -1,4 +1,1 @@
-# generated from genmsg/cmake/pkg-msg-paths.cmake.develspace.in
-
-set(patrolling_sim_MSG_INCLUDE_DIRS "")
-set(patrolling_sim_MSG_DEPENDENCIES std_msgs)
+/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/share/patrolling_sim/cmake/patrolling_sim-msg-paths.cmake

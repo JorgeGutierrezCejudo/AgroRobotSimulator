@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/jorgeurjc/Jorge_ws/devel/lib/patrolling_sim/DTAGreedy"
-  "/home/jorgeurjc/Jorge_ws/devel/lib/patrolling_sim/DTAGreedy.pdb"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/lib/patrolling_sim/DTAGreedy"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/lib/patrolling_sim/DTAGreedy.pdb"
   "CMakeFiles/DTAGreedy.dir/src/DTAGreedy_Agent.cpp.o"
 )
 

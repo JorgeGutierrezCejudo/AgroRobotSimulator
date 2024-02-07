@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/jorgeurjc/Jorge_ws/src/stage_ros/src/stageros.cpp
+/home/jorgeurjc/WorkSpace/ROS1/AgroSim/src/stage_ros/src/stageros.cpp
 stdio.h
 -
 stdlib.h
@@ -46,7 +46,7 @@ rosgraph_msgs/Clock.h
 std_srvs/Empty.h
 -
 tf/transform_broadcaster.h
-/home/jorgeurjc/Jorge_ws/src/stage_ros/src/tf/transform_broadcaster.h
+/home/jorgeurjc/WorkSpace/ROS1/AgroSim/src/stage_ros/src/tf/transform_broadcaster.h
 
 /opt/ros/noetic/include/Stage-4.3/stage.hh
 assert.h
@@ -784,6 +784,8 @@ ros/datatypes.h
 vector
 -
 map
+-
+memory
 -
 boost/array.hpp
 -

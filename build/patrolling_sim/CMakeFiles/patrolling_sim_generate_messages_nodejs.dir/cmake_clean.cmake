@@ -1,5 +1,8 @@
 file(REMOVE_RECURSE
-  "/home/jorgeurjc/Jorge_ws/devel/share/gennodejs/ros/patrolling_sim/srv/GoToStartPosSrv.js"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/share/gennodejs/ros/patrolling_sim/msg/PosRot.js"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/share/gennodejs/ros/patrolling_sim/msg/UnityColor.js"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/share/gennodejs/ros/patrolling_sim/msg/XCordenate.js"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/share/gennodejs/ros/patrolling_sim/srv/GoToStartPosSrv.js"
   "CMakeFiles/patrolling_sim_generate_messages_nodejs"
 )
 

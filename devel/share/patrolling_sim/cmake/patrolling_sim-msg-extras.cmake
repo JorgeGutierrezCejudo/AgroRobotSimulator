@@ -1,2 +1,1 @@
-set(patrolling_sim_MESSAGE_FILES "")
-set(patrolling_sim_SERVICE_FILES "/home/jorgeurjc/Jorge_ws/src/patrolling_sim/srv/GoToStartPosSrv.srv")
+/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/share/patrolling_sim/cmake/patrolling_sim-msg-extras.cmake

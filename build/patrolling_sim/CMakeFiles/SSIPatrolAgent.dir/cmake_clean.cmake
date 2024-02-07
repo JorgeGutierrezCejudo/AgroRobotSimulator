@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/jorgeurjc/Jorge_ws/devel/lib/libSSIPatrolAgent.pdb"
-  "/home/jorgeurjc/Jorge_ws/devel/lib/libSSIPatrolAgent.so"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/lib/libSSIPatrolAgent.pdb"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/lib/libSSIPatrolAgent.so"
   "CMakeFiles/SSIPatrolAgent.dir/src/SSIPatrolAgent.cpp.o"
 )
 

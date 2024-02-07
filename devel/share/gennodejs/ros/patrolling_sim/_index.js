@@ -1,6 +1,1 @@
-
-"use strict";
-
-module.exports = {
-  srv: require('./srv/_index.js')
-};
+/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/share/gennodejs/ros/patrolling_sim/_index.js

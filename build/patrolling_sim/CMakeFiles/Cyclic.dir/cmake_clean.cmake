@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/jorgeurjc/Jorge_ws/devel/lib/patrolling_sim/Cyclic"
-  "/home/jorgeurjc/Jorge_ws/devel/lib/patrolling_sim/Cyclic.pdb"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/lib/patrolling_sim/Cyclic"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/lib/patrolling_sim/Cyclic.pdb"
   "CMakeFiles/Cyclic.dir/src/Cyclic_Agent.cpp.o"
 )
 

@@ -1,4 +1,4 @@
-prefix=/home/jorgeurjc/Jorge_ws/install
+prefix=/home/jorgeurjc/WorkSpace/ROS1/AgroSim/install
 
 Name: patrolling_sim
 Description: Description of patrolling_sim

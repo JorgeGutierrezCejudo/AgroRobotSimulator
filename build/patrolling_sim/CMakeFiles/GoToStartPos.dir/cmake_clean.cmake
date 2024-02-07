@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/jorgeurjc/Jorge_ws/devel/lib/patrolling_sim/GoToStartPos"
-  "/home/jorgeurjc/Jorge_ws/devel/lib/patrolling_sim/GoToStartPos.pdb"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/lib/patrolling_sim/GoToStartPos"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/lib/patrolling_sim/GoToStartPos.pdb"
   "CMakeFiles/GoToStartPos.dir/src/GoToStartPos.cpp.o"
 )
 

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/jorgeurjc/Jorge_ws/devel/lib/patrolling_sim/idlHistogram"
-  "/home/jorgeurjc/Jorge_ws/devel/lib/patrolling_sim/idlHistogram.pdb"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/lib/patrolling_sim/idlHistogram"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/lib/patrolling_sim/idlHistogram.pdb"
   "CMakeFiles/idlHistogram.dir/src/idlHistogram.cpp.o"
 )
 

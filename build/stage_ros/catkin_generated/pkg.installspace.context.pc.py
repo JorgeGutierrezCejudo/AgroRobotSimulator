@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "stage_ros"
-PROJECT_SPACE_DIR = "/home/jorgeurjc/Jorge_ws/install"
+PROJECT_SPACE_DIR = "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/install"
 PROJECT_VERSION = "1.8.0"

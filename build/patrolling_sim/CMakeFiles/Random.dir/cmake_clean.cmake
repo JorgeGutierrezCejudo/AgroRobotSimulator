@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/jorgeurjc/Jorge_ws/devel/lib/patrolling_sim/Random"
-  "/home/jorgeurjc/Jorge_ws/devel/lib/patrolling_sim/Random.pdb"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/lib/patrolling_sim/Random"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/lib/patrolling_sim/Random.pdb"
   "CMakeFiles/Random.dir/src/Random_Agent.cpp.o"
 )
 

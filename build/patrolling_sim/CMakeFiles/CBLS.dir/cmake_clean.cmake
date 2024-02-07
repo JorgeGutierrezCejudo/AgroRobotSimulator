@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/jorgeurjc/Jorge_ws/devel/lib/patrolling_sim/CBLS"
-  "/home/jorgeurjc/Jorge_ws/devel/lib/patrolling_sim/CBLS.pdb"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/lib/patrolling_sim/CBLS"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/lib/patrolling_sim/CBLS.pdb"
   "CMakeFiles/CBLS.dir/src/CBLS_Agent.cpp.o"
 )
 

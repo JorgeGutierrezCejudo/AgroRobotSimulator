@@ -1,6 +1,9 @@
 file(REMOVE_RECURSE
-  "/home/jorgeurjc/Jorge_ws/devel/share/roseus/ros/patrolling_sim/manifest.l"
-  "/home/jorgeurjc/Jorge_ws/devel/share/roseus/ros/patrolling_sim/srv/GoToStartPosSrv.l"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/share/roseus/ros/patrolling_sim/manifest.l"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/share/roseus/ros/patrolling_sim/msg/PosRot.l"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/share/roseus/ros/patrolling_sim/msg/UnityColor.l"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/share/roseus/ros/patrolling_sim/msg/XCordenate.l"
+  "/home/jorgeurjc/WorkSpace/ROS1/AgroSim/devel/.private/patrolling_sim/share/roseus/ros/patrolling_sim/srv/GoToStartPosSrv.l"
   "CMakeFiles/patrolling_sim_generate_messages_eus"
 )
 
